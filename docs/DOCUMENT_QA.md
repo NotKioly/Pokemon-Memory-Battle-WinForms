@@ -1,5 +1,5 @@
-# Report export verification
+# Kiểm tra xuất báo cáo Word
 
-The Vietnamese seven-chapter report was exported to `BaoCao_GiuaKy_PokemonMemoryBattle.docx` using python-docx. Its code excerpts were read from the implemented source files. ZIP/XML structure, expected chapters and embedded gameplay image were checked.
+Đã cập nhật báo cáo DOCX hiện có bằng python-docx, giữ thiết lập trang/style, đủ bảy chương, đúng ba tên/MSSV, phân công dự kiến, mục đa ngôn ngữ và trích đoạn đọc từ source cuối. Đã kiểm tra cấu trúc ZIP/XML, nội dung và ảnh gameplay thật. REPORT.md chứa đầy đủ báo cáo dạng Markdown.
 
-**Visual layout is NOT VERIFIED.** The required `render_docx.py` command was attempted and failed with `FileNotFoundError: LibreOffice soffice.exe was not found on PATH`. The workspace dependency bundle contains no LibreOffice on this Windows host, and Word is unavailable. No successful page rendering or PNG inspection is claimed. Open the DOCX in Word/LibreOffice before submission to check pagination, code wrapping and tables. The complete readable Markdown version is `REPORT.md`.
+**Phân trang trực quan: NOT VERIFIED.** Đã chạy lại render_docx.py sau cập nhật; thất bại với `FileNotFoundError: LibreOffice soffice.exe was not found on PATH`. Bundle Windows không có LibreOffice và không có Word. Không tuyên bố đã render hoặc duyệt ảnh từng trang. Cần mở DOCX trên máy có Word/LibreOffice để kiểm tra ngắt trang, code và bảng trước khi nộp.

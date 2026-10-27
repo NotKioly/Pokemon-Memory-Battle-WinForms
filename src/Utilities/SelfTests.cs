@@ -25,6 +25,8 @@ internal static class SelfTests
         Directory.CreateDirectory(output);
         string temp = Path.Combine(Path.GetTempPath(), "MemoryBattleTests-" + Guid.NewGuid());
         Directory.CreateDirectory(temp);
+        LocalizationManager.Initialize(Path.Combine(temp, "settings.json"));
+        LocalizationManager.SetLanguage("en-US");
         try
         {
             foreach (var d in Difficulty.All)
@@ -47,7 +49,7 @@ internal static class SelfTests
             game.Reset(Difficulty.All[2], new Random(2));
             string order = string.Join(',', game.Cards.Select(c => c.Creature));
             game.Reset(Difficulty.All[2], new Random(3));
-            Check(order != string.Join(',', game.Cards.Select(c => c.Creature)), "Fisher�Yates changes deck order");
+            Check(order != string.Join(',', game.Cards.Select(c => c.Creature)), "Fisher-Yates changes deck order");
             game.Reset(Difficulty.All[0], new Random(1));
             game.Select(0);
             Check(game.Clicks == 0, "Ready rejects input");
@@ -214,7 +216,7 @@ internal static class SelfTests
                 end.Show();
                 var body = end.Controls.OfType<FlowLayoutPanel>().Single();
                 body.Controls.OfType<TextBox>().Single().Text = "UI Tester";
-                body.Controls.OfType<GameButton>().Single(b => b.Text == "Save Result").PerformClick();
+                body.Controls.OfType<GameButton>().Single(b => b.Name == "SaveResult").PerformClick();
                 Check(board.Load().Any(r => r.Name == "UI Tester"), "GameOver name entry and Save Result handler");
                 end.Close();
             }
@@ -229,6 +231,7 @@ internal static class SelfTests
                 menu.Close();
             }
             Check(warnings.Count(x => x.Contains("img/")) > 0, "Missing-resource warnings observed");
+            LocalizationTests.Run(output, temp, Check);
         }
         catch (Exception ex) { log.Add("FAIL | " + ex); Environment.ExitCode = 1; }
         finally { File.WriteAllLines(Path.Combine(output, "test-results.txt"), log); try { Directory.Delete(temp, true); } catch (IOException) { } }

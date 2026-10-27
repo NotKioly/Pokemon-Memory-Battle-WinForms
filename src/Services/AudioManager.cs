@@ -19,7 +19,7 @@ public sealed class AudioManager : IDisposable
                 player.Load();
                 players.Add(file, player);
             }
-            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException or System.TimeoutException) { resources.Warn($"Cannot play bg/{file}. Gameplay will continue silently. {ex.Message}"); }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException or System.TimeoutException) { resources.Warn(LocalizationManager.GetString("AudioLoadFailed", file)); }
         }
         resume.Tick += (_, _) => { resume.Stop(); Background(); };
         Background();
@@ -40,7 +40,7 @@ public sealed class AudioManager : IDisposable
             else
                 player.Play();
         }
-        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException or System.ComponentModel.Win32Exception) { resources.Warn($"Audio playback failed for {file}. {ex.Message}"); players.Remove(file); player.Dispose(); }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException or System.ComponentModel.Win32Exception) { resources.Warn(LocalizationManager.GetString("AudioPlayFailed", file)); players.Remove(file); player.Dispose(); }
     }
     private void Background()
     {

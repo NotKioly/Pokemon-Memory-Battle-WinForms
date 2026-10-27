@@ -21,3 +21,6 @@ Thay Sleep(2000) bằng Timer; thêm countdown/pause; nhập tên thật thay No
 
 ## Luồng trạng thái
 Ready → Start → Playing. Playing ↔ Paused. Playing → Won khi đủ cặp; Playing → Lost khi hết giờ. Restart ở mọi trạng thái tạo Ready mới. Mọi Select ngoài Playing bị bỏ qua. Victory và timeout dừng Timer trước khi mở GameOverForm để hộp thoại không làm chạy ngầm ván chơi.
+
+## Bản nâng cấp Việt Anh
+LocalizationManager.Initialize/LoadLanguagePreference chọn vi-VN khi thiếu/hỏng cấu hình; SaveLanguagePreference ghi LocalAppData. GetString đọc JSON nhúng. SetLanguage phát LanguageChanged; LocalizedForm.ApplyLocalization đổi text/tooltip. GameForm.ApplyLocalization chỉ RefreshGame, không ResetGame, nên model và Stopwatch được giữ. SettingsForm cho đổi trong lúc chơi; đồng hồ vẫn chạy nếu chưa Tạm dừng. ConfirmationForm dịch câu hỏi và nút. Các mã độ khó/schema thành tích giữ nguyên.

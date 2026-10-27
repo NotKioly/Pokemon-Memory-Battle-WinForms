@@ -1,12 +1,30 @@
 # Pokémon Memory Battle
 
-A Windows desktop memory game for the Windows Programming midterm (2611COMP101901). Match original pocket creatures in Easy 2×2, Normal 2×3 or Hard 4×4. Includes scoring, countdown, pause, sound, player entry and a file-backed leaderboard.
+## 1. Giới thiệu dự án
+Trò chơi ghép cặp thẻ WinForms của nhóm **AltF4**, học phần **Lập trình trên Windows 2611COMP101901**, lấy cảm hứng Trúc Xanh. Sinh vật và WAV được tạo riêng; dự án không liên kết chính thức với Pokémon và không chứa tài nguyên trích từ game thương mại.
 
-![Main menu](docs/screenshots/menu.png)
-![Actual gameplay](docs/screenshots/gameplay.png)
+## 2. Mục tiêu đề tài
+Vận dụng sự kiện, sinh điều khiển động, trạng thái, Timer, SoundPlayer, System.IO và bắt lỗi. Giao diện hỗ trợ **Tiếng Việt mặc định** và tùy chọn **English**, chuyển ngay và lưu cho lần chạy sau.
 
-## Requirements and quick start
-Windows 10/11, Visual Studio 2022 17.8 or newer with **.NET desktop development**, and .NET 8 SDK/Windows Desktop Runtime. Validated using Visual Studio 2026 Community 18 and SDK 10.0.401. The target is `net8.0-windows`; `RollForward=Major` also permits the installed .NET 10 desktop runtime. No external NuGet UI packages are used. Restore downloads Microsoft targeting packs if necessary.
+## 3. Thành viên nhóm
+| STT | Họ và tên | Mã số sinh viên |
+|---|---|---|
+| 1 | Dương Đình Khôi | 51.01.104.049 |
+| 2 | Đào Trọng Quyền | 51.01.104.085 |
+| 3 | Cổ Gia Phúc | 51.01.104.126 |
+
+Ba tên/MSSV khớp nhóm AltF4 trong hướng dẫn giảng viên. **Lớp, tên giảng viên và tên trường chưa được cung cấp; không suy diễn từ mã học phần.** About ghi rõ tình trạng lớp.
+
+## 4. Công nghệ sử dụng
+Ngôn ngữ lập trình **C#**, framework **Windows Forms**, game **Pokémon Memory Battle**. Target **.NET 8 Windows** (`net8.0-windows`), Windows 10/11, Visual Studio 2022 từ 17.8 hoặc mới hơn với workload **.NET desktop development**. Đã build bằng SDK 10.0.401; `RollForward=Major` cho phép dùng Windows Desktop Runtime 10 đã cài. Bản publish tự chứa không cần cài runtime riêng.
+
+Dùng `System.Windows.Forms.Timer`, `Stopwatch`, `SoundPlayer`, `System.IO`, `System.Text.Json`, Git/GitHub. Không dùng UI package ngoài. `LocalizationManager` quản lý hai tài nguyên JSON UTF-8 được nhúng vào assembly.
+
+## 5. Các chức năng chính
+Ba mức Dễ 2×2, Thường 2×3, Khó 4×4; Fisher–Yates; khóa hai thẻ; điểm/lượt/nhấp/cặp/đếm ngược; tạm dừng/tiếp tục; chơi lại; xác nhận thao tác; nhạc nền và phản hồi; nhập tên; bảng thành tích; hướng dẫn/nhóm; cài đặt Việt–Anh; phục hồi lỗi file/tài nguyên.
+
+## 6. Hướng dẫn cài đặt
+Cài Git, Visual Studio với workload nêu trên và .NET 8 SDK. Khôi phục targeting pack có thể cần Internet.
 
 ```powershell
 git clone https://github.com/NotKioly/Pokemon-Memory-Battle-WinForms.git
@@ -15,49 +33,82 @@ dotnet build PokemonMemoryBattle.sln -c Release
 dotnet run --project src/PokemonMemoryBattle.csproj -c Release
 ```
 
-In Visual Studio open `PokemonMemoryBattle.sln`, choose the PokemonMemoryBattle startup project and press F5. Forms are built in C# for straightforward code explanation; there are no generated Designer layouts to edit.
-
-For a Windows executable without an installed runtime:
+Tạo bản Windows x64 tự chứa runtime:
 
 ```powershell
 dotnet publish src/PokemonMemoryBattle.csproj -c Release -r win-x64 --self-contained true -o artifacts/publish
 ```
 
-Run `artifacts/publish/PokemonMemoryBattle.exe`. Keep `img`, `bg` and `thanhtichs.txt` beside the executable.
+Chạy `artifacts/publish/PokemonMemoryBattle.exe`, giữ `img/`, `bg/`, `thanhtichs.txt` bên cạnh. Code MIT, tài nguyên gốc CC0; xem LICENSE và ASSET_LICENSE.md.
 
-## Controls and scoring
-Select difficulty on the menu, Start Game, then **Start** on the board. Click cards or focus with Tab and use Space. Two valid selections form one move; valid individual selections increment Clicks. Match +100, mismatch −10 (floor 0), win bonus +5 per remaining second. Countdown: 45/60/120 seconds. Pause freezes time and pending mismatch, concealing cards; Resume continues. Restart returns to Ready with a new shuffle. Return to Menu abandons the round. Sound toggles music and effects together. Win or timeout opens name entry and Save Result. Save is disabled after success to avoid duplicates.
+## 7. Hướng dẫn chạy dự án bằng Visual Studio
+Mở `PokemonMemoryBattle.sln`, đợi restore, chọn PokemonMemoryBattle làm dự án khởi động và nhấn F5/Ctrl+F5. Các form tạo bằng C# để dễ giải thích layout/sự kiện, không có bố cục Designer sinh tự động. Build tự sao chép tài nguyên.
 
-## Persistence and resources
-All packaged paths use `AppContext.BaseDirectory`. `thanhtichs.txt` uses UTF-8 JSON Lines (one `Result` per line). Fields: Name, Score, Moves, CompletionSeconds, Date (local ISO 8601), Difficulty, Won. Sample rows are labelled Demo. Sort: Score descending, Moves ascending, CompletionSeconds ascending, Date ascending. The table includes difficulty and win/loss because scores across modes are not normalized. Completion time is active whole seconds, excluding pause.
+## 8. Hướng dẫn chơi
+Chọn độ khó → Bắt đầu chơi → Bắt đầu. Dùng chuột hoặc Tab rồi phím cách chọn hai thẻ. Cặp đúng giữ mở, sai đóng sau 750ms; không chọn được thẻ thứ ba khi chờ. Tạm dừng che thẻ và giữ thời gian/delay; Tiếp tục chơi tiếp. Chơi lại từ đầu tạo bộ mới về Sẵn sàng sau xác nhận. Về trình đơn kết thúc ván. Cuối ván nhập tên 1–24 ký tự, Lưu kết quả rồi Xem thành tích.
 
-Missing file: warning and recreation. Invalid lines: warning and skip. Write/access failure: `%LOCALAPPDATA%/PokemonMemoryBattle/thanhtichs.txt`; further failures warn and preserve unsaved state. The bundled sample remains in source. Results are plain local files without tamper protection or cross-process locking.
+## 9. Hướng dẫn chuyển đổi ngôn ngữ
+Mở **Cài đặt → Ngôn ngữ → Tiếng Việt / English** từ menu hoặc bàn chơi. Các form đang mở, tiêu đề, thẻ, HUD, bảng điểm, hướng dẫn/nhóm, tooltip và câu hỏi xác nhận đổi ngay. Lưu tại `%LOCALAPPDATA%/PokemonMemoryBattle/settings.json`, ví dụ `{"language":"vi-VN"}`.
 
-Original generated PNG/WAV assets replace official Pokémon art and music. See `ASSET_LICENSE.md`. Code MIT; artwork/audio CC0. Pokémon trademark belongs to its owners; this is an unaffiliated educational title.
+Lần đầu hoặc thiếu file dùng Tiếng Việt. JSON hỏng, sai kiểu, ngôn ngữ không hỗ trợ hoặc lỗi đọc cũng fallback Tiếng Việt. Không ghi được thì cảnh báo và giữ lựa chọn trong phiên. Cấu hình không nằm trong thư mục cài đặt. Đổi tiếng không reset điểm, lượt, thời gian hoặc thẻ. Đồng hồ vẫn chạy khi mở Cài đặt; hãy Tạm dừng trước nếu cần.
 
-## Structure
-- `src/Program.cs`: entry and test switch
-- `src/Models`, `GameLogic`: state, cards, difficulty, score and matching
-- `src/Forms`, `Controls`: menu, board, results, leaderboard, help, drawing
-- `src/Services`: resources, SoundPlayer, System.IO
-- `src/Utilities/SelfTests.cs`, `tests/Run-Tests.ps1`: executable checks
-- `img`, `bg`, `thanhtichs.txt`: assignment source data copied into build and publish output
-- `docs`: requirement mapping, Vietnamese report, code guide, testing and demo scripts
-- `tools/generate_assets.py`: optional reproducible assets (Python + Pillow)
+## 10. Hệ thống tính điểm
+Đúng +100; sai −10 sàn 0; thắng +5×giây còn lại. Một lượt là hai lựa chọn hợp lệ; số nhấp đếm từng lựa chọn hợp lệ. Dễ/Thường/Khó có 45/60/120 giây. Điểm giữa độ khó không chuẩn hóa nên bảng giữ cột độ khó và kết quả.
 
-## Validation
-Run `powershell -ExecutionPolicy Bypass -File tests/Run-Tests.ps1`. Tests open real forms and pump the WinForms message loop. They use temporary score files; bundled sample rows are preserved. See `docs/TEST_PLAN.md` and the recorded `docs/TEST_RESULTS.txt`. Release build has zero errors and warnings. Screen captures are real `DrawToBitmap` renders of running forms, not design mockups.
+## 11. Bảng thành tích
+`thanhtichs.txt` là JSON Lines UTF-8, mỗi dòng gồm `Name`, `Score`, `Moves`, `CompletionSeconds`, `Date`, `Difficulty`, `Won`. Ngày lưu ISO 8601 theo giờ máy; giao diện định dạng theo ngôn ngữ. Sắp xếp điểm giảm dần, lượt/thời gian/ngày tăng dần. Hai dòng mẫu có tên bắt đầu Demo.
 
-## Team and submission
-1. Dương Đình Khôi — 51.01.104.049: gameplay, timing, storage, errors.
-2. Đào Trọng Quyền — 51.01.104.085: UI, assets, report.
-3. Cổ Gia Phúc — 51.01.104.126: QA, presentation, narrated video, GitHub notes.
+Schema và mã `Easy/Normal/Hard` giữ ổn định; chỉ hiển thị được dịch. Thiếu file tạo rỗng, dòng hỏng bị bỏ qua kèm cảnh báo. Không ghi được cạnh executable thì chuyển `%LOCALAPPDATA%/PokemonMemoryBattle/thanhtichs.txt`; nếu vẫn lỗi không báo lưu thành công. Tệp mẫu source được giữ nguyên.
 
-These are proposed ownership areas for review and presentation, not claims that named students authored unperformed work. Replace placeholders in HelpForm and documentation before submission. Students must understand and rehearse the assisted implementation.
+## 12. Cấu trúc thư mục dự án
+```text
+PokemonMemoryBattle.sln
+src/Program.cs
+src/Forms/          # Các form, SettingsForm, LocalizedForm
+src/Controls/       # Theme, MemoryCardControl
+src/Models/         # Trạng thái, thẻ, độ khó, kết quả
+src/GameLogic/      # GameManager, ScoreManager
+src/Services/       # Ngôn ngữ, IO, ảnh, âm thanh
+src/Resources/      # Strings.vi-VN.json, Strings.en-US.json
+src/Utilities/      # SelfTests, LocalizationTests
+img/                # 8 sinh vật
+bg/                 # Mặt úp, 3 WAV
+thanhtichs.txt
+docs/               # Báo cáo, audit, test, kịch bản, ảnh thật
+tests/Run-Tests.ps1
+tools/generate_assets.py
+```
 
-**Remaining submission tasks:** record the required 3–5 minute video with a real member narrating (script provided; no video is claimed), verify sound audibly on the presentation machine, enter this repository URL in the class sheet's **Giữa kì** column and confirm submission separately. Lecturer deadline: **27 October 2026, 23:59**, presentations **29 October 2026 from 20:00**, maximum 10 minutes, join at least 10 minutes early. Group identity/slot is unconfirmed; do not infer it from the three-member count.
+## 13. Xử lý lỗi và ngoại lệ
+ResourceManager, AudioManager, LeaderboardService bắt lỗi tại chỗ và phục hồi bằng ảnh vẽ, bỏ tiếng hoặc vị trí ghi an toàn. Thông báo dùng ngôn ngữ hiện hành, không chèn nguyên lỗi hệ điều hành khác ngôn ngữ. LocalizationManager ghi qua file tạm rồi đổi tên; xử lý cấu hình thiếu/hỏng/không có quyền. Cảnh báo tài nguyên dùng MessageBox.Show; hộp xác nhận có nút tự dịch. Không có catch rỗng bao trùm gameplay.
 
-## Known limitations
-The Vietnamese DOCX was exported and structurally checked. Visual page QA could not run because the Windows environment has no LibreOffice or Word renderer; see `docs/DOCUMENT_QA.md`. Review it in Word before submission; `docs/REPORT.md` contains the complete report text.
+## 14. Hình ảnh giao diện
+Ảnh render trực tiếp từ ứng dụng thật bằng DrawToBitmap.
 
-Team information and narrated video require the real group. Desktop capture/input automation could read accessibility data but could not capture the live desktop window; no manual mouse-based or modal-dialog visual pass is claimed. The executable tests verify actual handlers/timers and warning callbacks. Audibility, 150%/200% DPI, dual-monitor behavior and the lecturer's computer remain manual checks. Creature flips are instant with a nonblocking 750ms mismatch display, without a 3D flip animation. The supplied WIN_T4_TrucXanh source was unavailable; comparisons refer only to limitations described in the lecturer's document.
+![Trình đơn Tiếng Việt](docs/screenshots/menu-vi-VN.png)
+![Bàn chơi Tiếng Việt](docs/screenshots/gameplay-vi-VN.png)
+![Cài đặt](docs/screenshots/settings-vi-VN.png)
+![Bàn chơi English](docs/screenshots/gameplay-en-US.png)
+
+## 15. Kiểm thử
+```powershell
+powershell -ExecutionPolicy Bypass -File tests/Run-Tests.ps1
+```
+
+Test chạy Windows, mở form thật, gọi handler và xử lý Timer Tick thật. File điểm/cài đặt test nằm trong thư mục tạm, không sửa cấu hình cá nhân. Có **62 PASS**: 43 kiểm tra gốc và 19 bổ sung, gồm đủ **LANG-01 đến LANG-15**. LANG-04 khởi chạy tiến trình mới. LANG-13 đo chữ/nút/nhãn và cửa sổ ở 100% DPI; màn hình vật lý/DPI 150–200% chưa xác minh. Xem TEST_PLAN.md, TEST_RESULTS.txt, LOCALIZATION_RESULTS.txt và FINAL_AUDIT.md trong docs.
+
+## 16. Phân công công việc
+Đây là **phân công dự kiến**, không xác nhận đóng góp thực tế từng cá nhân.
+
+| Thành viên | Trách nhiệm dự kiến |
+|---|---|
+| Dương Đình Khôi | Lập trình chính, gameplay/logic, Timer/điểm, xử lý lỗi, quản lý source GitHub |
+| Đào Trọng Quyền | UI/UX, tài nguyên, kiểm thử giao diện, hỗ trợ tài liệu kỹ thuật |
+| Cổ Gia Phúc | Thuyết trình, minh họa game, kiểm thử/QA, chuẩn bị báo cáo cuối |
+
+Sinh viên cần hiểu mã và diễn tập sửa nhỏ trực tiếp. Không có source WIN_T4_TrucXanh; so sánh chỉ dựa vào hạn chế được mô tả trong đề.
+
+## 17. Hạn chế và hướng phát triển
+Chưa có video 3–5 phút với giọng thành viên, xác nhận nộp cột Giữa kì hoặc tên lớp. Cần nghe thử tiếng, xác minh MessageBox bằng mắt, DPI cao và vấn đáp thật. DOCX đã xuất/kiểm tra cấu trúc nhưng chưa render trang vì thiếu Word/LibreOffice (DOCUMENT_QA.md). Điểm không chống sửa/khóa ghi nhiều tiến trình; chưa có flip 3D. Có thể thêm lọc bảng điểm và sinh vật sau khi hoàn thiện minh chứng.
+
+Theo ba tên/MSSV, AltF4 có khung **21:10–21:20 ngày 29/10/2026**, chuẩn bị trước **21:00**. Hạn nộp **23:59 ngày 27/10/2026**; đại diện tự xác nhận đã nhập [URL GitHub](https://github.com/NotKioly/Pokemon-Memory-Battle-WinForms) vào cột **Giữa kì**.

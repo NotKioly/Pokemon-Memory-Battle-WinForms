@@ -3,7 +3,7 @@
 Primary source: lecturer document “Lich bao cao + huong dan.docx”, read in full including tables. Course 2611COMP101901. No original WIN_T4_TrucXanh source was supplied. This table distinguishes implementation from real-world submission and manual verification. PASS means implemented and verified as stated; FAIL means a deliverable or supplied information is absent; NOT VERIFIED means an external/manual confirmation remains.
 
 ## Conflicts and interpretation
-The lecturer calls Section 2 7.0 points while its sub-items total 8.0; the overall labelled sections also do not sum consistently to 10. All listed criteria are retained without inventing weights. The selected three-person group is not identified; assignment roster names are not copied into placeholders. Pokémon art/music is replaced by original creature assets to satisfy redistribution rules. .NET 8 remains the target; major-runtime roll-forward permits the installed .NET 10 desktop runtime. UI is implemented with C# drawing/layout; students must review and be able to explain the assisted code, respecting the lecturer's warning against relying on generated UI without ownership. The exact group presentation slot cannot be inferred from group size.
+The lecturer calls Section 2 7.0 points while its sub-items total 8.0; the overall labelled sections also do not sum consistently to 10. All listed criteria are retained without inventing weights. Exact user-supplied names/IDs identify AltF4; class is not supplied. Pokémon art/music is replaced by original creature assets to satisfy redistribution rules. .NET 8 remains the target; major-runtime roll-forward permits the installed .NET 10 desktop runtime. UI is implemented with C# drawing/layout; students must review and be able to explain the assisted code, respecting the lecturer's warning against relying on generated UI without ownership. Exact identity match, rather than group size, confirms AltF4 21:10–21:20 on 29 October 2026.
 
 | ID | Requirement | Implementation and relevant classes/methods | Verification | Status |
 |---|---|---|---|---|
@@ -15,7 +15,7 @@ The lecturer calls Section 2 7.0 points while its sub-items total 8.0; the overa
 | L06 | Public GitHub or lecturer permission and complete commit | README; docs/DELIVERY.md; remote main | Public unauthenticated API tree and fresh clone/build verified | PASS |
 | L07 | Enter repository URL in class Giữa kì column before 27/10/2026 23:59 | docs/DEMO_SCRIPT.md | Group confirms sheet submission separately | NOT VERIFIED |
 | L08 | Attend 29/10/2026 from 20:00, max 10 minutes and arrive 10 minutes early | docs/DEMO_SCRIPT.md | Group confirms actual slot, equipment and attendance | NOT VERIFIED |
-| L09 | Help and About with full name MSSV class and responsibilities | HelpForm; TEAM_CONTRIBUTIONS.md | Placeholders present; real identities not supplied | FAIL |
+| L09 | Help and About with full name MSSV class and responsibilities | HelpForm; TEAM_CONTRIBUTIONS.md | Exact names/IDs verified in both JSON resources/About; class not supplied | NOT VERIFIED |
 | L10 | Show board, score, click count, countdown and controls | GameForm.RefreshGame; MemoryCardControl.OnPaint | Runtime screenshots and handler tests | PASS |
 | L11 | Start Pause Restart End Game smooth selection and small grid | GameForm; GameManager; Difficulty.All | Real timers and 2×2 completion | PASS |
 | L12 | Background and event audio plus live toggle | AudioManager.Play/Toggle; GameForm sound handler | Playback calls pass; speaker audibility needs human | NOT VERIFIED |
@@ -46,9 +46,30 @@ The lecturer calls Section 2 7.0 points while its sub-items total 8.0; the overa
 | U20 | Clean small classes no external UI packages | src structure; csproj | Source inspection | PASS |
 | U21 | 15 beginner code topics explained with real source | docs/CODE_EXPLANATION.md | Compare class/method references against source | PASS |
 | U22 | Actual build no compile errors and Visual Studio opens | Solution; build command | SDK10 Release 0 warnings/0 errors; VS18 title/debug target observed | PASS |
-| U23 | Runtime tests explicitly separated from static/manual checks | docs/TEST_PLAN.md; TEST_RESULTS.txt | 43 executed checks and unresolved manual checks documented | PASS |
+| U23 | Runtime tests explicitly separated from static/manual checks | docs/TEST_PLAN.md; TEST_RESULTS.txt | 62 executed checks and unresolved manual checks documented | PASS |
 | U24 | Vietnamese seven chapter report and genuine code extracts | docs/REPORT.md; DOCX report | Real source excerpts and DOCX structure verified; page rendering blocked by missing renderer (DOCUMENT_QA.md) | NOT VERIFIED |
 | U25 | 10 minute script Q&A plus separate recording checklist | DEMO_SCRIPT; VIDEO_RECORDING | Document inspection | PASS |
 | U26 | Professional navy UI custom buttons hover pressed spacing | Theme; MemoryCardControl; forms | Actual form captures visually inspected | PASS |
 | U27 | 1366×768 and 1920×1080 usability | Theme.Form; TableLayoutPanel Dock/percent styles | Minimum 900×640 grids tested; native screen modes not changed | NOT VERIFIED |
 | U28 | Final audit and truthful outstanding issues | REQUIREMENTS; TEST_PLAN; DELIVERY | Review source document again against all rows | PASS |
+
+
+## Bilingual upgrade
+
+| ID | Requirement | Implementation | Verification | Status |
+|---|---|---|---|---|
+| LANG-01 | See TEST_PLAN.md | LocalizationManager; LocalizedForm; SettingsForm; LocalizationTests; Strings.*.json | LOCALIZATION_RESULTS.txt; 100% DPI captures; native high-DPI pending | PASS |
+| LANG-02 | See TEST_PLAN.md | LocalizationManager; LocalizedForm; SettingsForm; LocalizationTests; Strings.*.json | LOCALIZATION_RESULTS.txt; 100% DPI captures; native high-DPI pending | PASS |
+| LANG-03 | See TEST_PLAN.md | LocalizationManager; LocalizedForm; SettingsForm; LocalizationTests; Strings.*.json | LOCALIZATION_RESULTS.txt; 100% DPI captures; native high-DPI pending | PASS |
+| LANG-04 | See TEST_PLAN.md | LocalizationManager; LocalizedForm; SettingsForm; LocalizationTests; Strings.*.json | LOCALIZATION_RESULTS.txt; 100% DPI captures; native high-DPI pending | PASS |
+| LANG-05 | See TEST_PLAN.md | LocalizationManager; LocalizedForm; SettingsForm; LocalizationTests; Strings.*.json | LOCALIZATION_RESULTS.txt; 100% DPI captures; native high-DPI pending | PASS |
+| LANG-06 | See TEST_PLAN.md | LocalizationManager; LocalizedForm; SettingsForm; LocalizationTests; Strings.*.json | LOCALIZATION_RESULTS.txt; 100% DPI captures; native high-DPI pending | PASS |
+| LANG-07 | See TEST_PLAN.md | LocalizationManager; LocalizedForm; SettingsForm; LocalizationTests; Strings.*.json | LOCALIZATION_RESULTS.txt; 100% DPI captures; native high-DPI pending | PASS |
+| LANG-08 | See TEST_PLAN.md | LocalizationManager; LocalizedForm; SettingsForm; LocalizationTests; Strings.*.json | LOCALIZATION_RESULTS.txt; 100% DPI captures; native high-DPI pending | PASS |
+| LANG-09 | See TEST_PLAN.md | LocalizationManager; LocalizedForm; SettingsForm; LocalizationTests; Strings.*.json | LOCALIZATION_RESULTS.txt; 100% DPI captures; native high-DPI pending | PASS |
+| LANG-10 | See TEST_PLAN.md | LocalizationManager; LocalizedForm; SettingsForm; LocalizationTests; Strings.*.json | LOCALIZATION_RESULTS.txt; 100% DPI captures; native high-DPI pending | PASS |
+| LANG-11 | See TEST_PLAN.md | LocalizationManager; LocalizedForm; SettingsForm; LocalizationTests; Strings.*.json | LOCALIZATION_RESULTS.txt; 100% DPI captures; native high-DPI pending | PASS |
+| LANG-12 | See TEST_PLAN.md | LocalizationManager; LocalizedForm; SettingsForm; LocalizationTests; Strings.*.json | LOCALIZATION_RESULTS.txt; 100% DPI captures; native high-DPI pending | PASS |
+| LANG-13 | See TEST_PLAN.md | LocalizationManager; LocalizedForm; SettingsForm; LocalizationTests; Strings.*.json | LOCALIZATION_RESULTS.txt; 100% DPI captures; native high-DPI pending | NOT VERIFIED |
+| LANG-14 | See TEST_PLAN.md | LocalizationManager; LocalizedForm; SettingsForm; LocalizationTests; Strings.*.json | LOCALIZATION_RESULTS.txt; 100% DPI captures; native high-DPI pending | PASS |
+| LANG-15 | See TEST_PLAN.md | LocalizationManager; LocalizedForm; SettingsForm; LocalizationTests; Strings.*.json | LOCALIZATION_RESULTS.txt; 100% DPI captures; native high-DPI pending | PASS |

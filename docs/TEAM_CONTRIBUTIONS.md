@@ -1,11 +1,13 @@
-# Phân công và trách nhiệm kiểm tra
+# Phân công dự kiến nhóm AltF4
 
-Đây là phân công đề xuất để ba thành viên nhận bàn giao, học mã và chuẩn bị báo cáo. Không ghi nhận những công việc chưa được sinh viên thực hiện là đã hoàn thành.
-
-| Thành viên | Họ tên / MSSV / Lớp | Phần nhận bàn giao | Bằng chứng cần bổ sung |
+| STT | Họ và tên | MSSV | Trách nhiệm dự kiến |
 |---|---|---|---|
-| 1 | [HỌ TÊN 1] / [MSSV 1] / [LỚP 1] | GameManager, ScoreManager, GameForm Timer, System.IO, bắt lỗi | Giải thích Select/Reset/Tick, chạy test và kiểm tra lưu file |
-| 2 | [HỌ TÊN 2] / [MSSV 2] / [LỚP 2] | Theme, MemoryCardControl, đồ họa gốc, Help, báo cáo | Xác nhận giao diện, điền thông tin nhóm, duyệt báo cáo |
-| 3 | [HỌ TÊN 3] / [MSSV 3] / [LỚP 3] | QA, demo, video, README và nộp link | Video 3–5 phút có giọng thật, diễn tập, xác nhận cột Giữa kì |
+| 1 | Dương Đình Khôi | 51.01.104.049 | Lập trình chính; gameplay/logic; Timer/điểm; xử lý lỗi; quản lý source GitHub |
+| 2 | Đào Trọng Quyền | 51.01.104.085 | UI/UX; tài nguyên; kiểm thử giao diện; hỗ trợ tài liệu kỹ thuật |
+| 3 | Cổ Gia Phúc | 51.01.104.126 | Thuyết trình; minh họa game; kiểm thử/QA; chuẩn bị báo cáo cuối |
 
-Cập nhật HelpForm.cs, README.md, REPORT.md và bản DOCX cùng lúc sau khi có thông tin thật. Mỗi người mở Visual Studio và kiểm tra mic/camera/âm thanh trước khung giờ ít nhất 10 phút. Tất cả thành viên chuẩn bị trả lời ngẫu nhiên và chỉnh sửa nhỏ trực tiếp.
+Đây là phân công dự kiến để nhận bàn giao và diễn tập, không xác nhận đóng góp đã hoàn thành. Chưa có lớp, tên trường hay tên giảng viên nên không suy đoán.
+
+Khôi cần giải thích GameManager.Select/Reset, GameForm.OnClockTick/OnFlipTick, lưu file và LocalizationManager. Quyền cần trình bày Theme, MemoryCardControl, LocalizedForm.ApplyLocalization, SettingsForm và tài nguyên. Phúc cần nắm SelfTests/LocalizationTests, kết quả kiểm thử, kịch bản, video và báo cáo. Cả ba chuẩn bị Event Handler, Timer, SoundPlayer, System.IO, try/catch và chỉnh sửa nhỏ trực tiếp.
+
+Ba tên/MSSV khớp AltF4, khung 21:10–21:20 ngày 29/10/2026. Chuẩn bị trước 21:00: mở Visual Studio, thử mic/camera/chia sẻ tiếng, xác nhận lớp thật khi được cung cấp.

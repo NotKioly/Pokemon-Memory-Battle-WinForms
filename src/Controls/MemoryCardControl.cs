@@ -1,4 +1,5 @@
 using System.Drawing.Drawing2D;
+using static PokemonMemoryBattle.LocalizationManager;
 namespace PokemonMemoryBattle;
 
 public sealed class MemoryCardControl : GameButton
@@ -12,7 +13,6 @@ public sealed class MemoryCardControl : GameButton
     {
         get; set;
     }
-    private static readonly string[] names = ["EMBER", "SPROUT", "BUBBLE", "VOLT", "FROST", "PEBBLE", "DUSK", "CORAL"];
     public MemoryCardControl(CardModel card, Image? frontImage, Image? backImage)
     {
         Card = card;
@@ -20,8 +20,10 @@ public sealed class MemoryCardControl : GameButton
         back = backImage;
         Dock = DockStyle.Fill;
         Margin = new Padding(7);
-        AccessibleName = $"Creature card {names[card.Creature]}";
+        ApplyLocalization();
     }
+    public void ApplyLocalization() => AccessibleName = !Concealed && (Card.Revealed || Card.Matched)
+        ? GetString("CardAccessible", GetString("Creature" + Card.Creature)) : GetString("CardBack");
     protected override void OnPaint(PaintEventArgs e)
     {
         var g = e.Graphics;
@@ -46,7 +48,7 @@ public sealed class MemoryCardControl : GameButton
             TextRenderer.DrawText(g, visible ? "★" : "?", f, rect, Theme.Accent, TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
         }
         var label = new Rectangle(3, Height - 28, Width - 6, 24);
-        TextRenderer.DrawText(g, visible ? names[Card.Creature] : "MEMORY", Font, label, visible ? Theme.Ink : Theme.Muted, TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+        TextRenderer.DrawText(g, visible ? GetString("Creature" + Card.Creature) : GetString("CardBack"), Font, label, visible ? Theme.Ink : Theme.Muted, TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
         if (Focused)
             ControlPaint.DrawFocusRectangle(g, new Rectangle(6, 6, Width - 12, Height - 12));
     }

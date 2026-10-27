@@ -1,17 +1,11 @@
-# Delivery status
+# Trạng thái bàn giao bản đa ngôn ngữ
 
-Public repository: https://github.com/NotKioly/Pokemon-Memory-Battle-WinForms (created and pushed using existing authenticated Git credentials). Public access and all 50 tracked source/assets/documents were verified through the unauthenticated GitHub API. A fresh clone into a different directory built with zero warnings/errors and passed all 43 runtime checks. No bin/obj/.vs/cache files are tracked.
+Kho hiện có: https://github.com/NotKioly/Pokemon-Memory-Battle-WinForms. Đã fetch và fast-forward commit README 04346ad của người dùng trước khi sửa; không ghi đè thay đổi từ xa. Không tạo kho mới, không force-push.
 
-Build: Release net8.0-windows, SDK 10.0.401; 0 errors, 0 warnings. Runtime: 43 executed PASS checks. Solution opened in Visual Studio 2026 Community 18; title/debug target observed through accessibility. docs/screenshots contains real running-form renders.
+Build Release net8.0-windows: 0 lỗi, 0 cảnh báo. 62 kiểm tra tự động PASS gồm 15 mã LANG; bằng chứng gốc ở TEST_RESULTS.txt và LOCALIZATION_RESULTS.txt. Ảnh trong screenshots render từ form thật; đã xem để sửa CRLF của About và kiểm tra bố cục/dấu. Cấu hình test tách biệt với cài đặt người dùng thật.
 
-Remaining obligations: replace all three members' name/MSSV/class placeholders; record and upload a real 3–5 minute narrated video; verify audible output and resource-warning MessageBox on the presentation desktop; confirm native resolutions/DPI; submit repository URL in the class Giữa kì column and separately confirm that submission. These external actions are not claimed complete.
+Danh tính: Dương Đình Khôi — 51.01.104.049; Đào Trọng Quyền — 51.01.104.085; Cổ Gia Phúc — 51.01.104.126. Trách nhiệm là dự kiến. Nhóm AltF4 khớp tài liệu; lớp không được cung cấp.
 
-If pushing future updates:
-```powershell
-git add .
-git commit -m "Add team details and narrated demo"
-git push origin main
-```
-Never force-push. Keep bin/obj/.vs/artifacts ignored. Check `git status --short` before committing. Do not commit credentials or personal class roster files. The original lecturer document is not redistributed.
+DOCX được cập nhật từ báo cáo hiện có; kiểm tra cấu trúc và nội dung. Visual QA trang bị chặn do không có Word/LibreOffice; xem DOCUMENT_QA.md. Video có giọng thật, âm thanh nghe qua loa, modal MessageBox thủ công, DPI cao, xác nhận nộp link và vấn đáp vẫn chưa hoàn thành/xác minh.
 
-Self-contained win-x64 publish: PASS, including 43/43 runtime checks from a separate working directory. Portable ZIP is supplied separately from the source repository. DOCX export and structural checks: PASS; page rendering NOT VERIFIED because LibreOffice/Word is unavailable (see DOCUMENT_QA.md).
+Xuất bản cập nhật dùng commit mô tả, push origin main và kiểm tra lại HEAD cùng cây source/assets public; kết quả push được ghi ở bước kiểm tra cuối. Nếu xác thực hết hạn: `git add .`, `git commit -m "feat: add Vietnamese-English localization and update project documentation"`, sau khi đăng nhập GitHub chạy `git push origin main`. Không dùng force.

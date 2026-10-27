@@ -8,14 +8,14 @@ public sealed class LeaderboardService(string root, Action<string> warn, string?
     {
         name = (name ?? "").Trim();
         if (name.Length < 1 || name.Length > 24 || name.Any(char.IsControl))
-            throw new ArgumentException("Enter a name of 1–24 characters without control characters.");
+            throw new ArgumentException(LocalizationManager.GetString("NameInvalid"));
         return name;
     }
     private void EnsureFile()
     {
         if (!File.Exists(FilePath))
         {
-            warn("Leaderboard file is missing. An empty thanhtichs.txt will be created.");
+            warn(LocalizationManager.GetString("LeaderboardMissing"));
             Directory.CreateDirectory(Path.GetDirectoryName(FilePath)!);
             File.WriteAllText(FilePath, "");
         }
@@ -23,7 +23,7 @@ public sealed class LeaderboardService(string root, Action<string> warn, string?
     private void Fallback()
     {
         FilePath = Path.Combine(fallbackRoot ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PokemonMemoryBattle"), "thanhtichs.txt");
-        warn($"Leaderboard access failed. Using writable location: {FilePath}");
+        warn(LocalizationManager.GetString("LeaderboardFallback", FilePath));
     }
     public List<Result> Load()
     {
@@ -32,7 +32,7 @@ public sealed class LeaderboardService(string root, Action<string> warn, string?
             EnsureFile();
             return Read();
         }
-        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { Fallback(); try { EnsureFile(); return Read(); } catch (Exception e) when (e is IOException or UnauthorizedAccessException) { warn($"Cannot read leaderboard: {e.Message}"); return []; } }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { Fallback(); try { EnsureFile(); return Read(); } catch (Exception e) when (e is IOException or UnauthorizedAccessException) { warn(LocalizationManager.GetString("LeaderboardReadFailed")); return []; } }
     }
     private List<Result> Read()
     {
@@ -53,7 +53,7 @@ public sealed class LeaderboardService(string root, Action<string> warn, string?
             catch (Exception e) when (e is JsonException or ArgumentException or FormatException) { invalid++; }
         }
         if (invalid > 0)
-            warn($"Skipped {invalid} invalid leaderboard line(s).");
+            warn(LocalizationManager.GetString("LeaderboardInvalidLines", invalid));
         return list.OrderByDescending(r => r.Score).ThenBy(r => r.Moves).ThenBy(r => r.CompletionSeconds).ThenBy(r => r.Date).ToList();
     }
     public bool Save(Result result)
@@ -65,6 +65,6 @@ public sealed class LeaderboardService(string root, Action<string> warn, string?
             File.AppendAllText(FilePath, JsonSerializer.Serialize(result) + Environment.NewLine);
             return true;
         }
-        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { Fallback(); try { EnsureFile(); File.AppendAllText(FilePath, JsonSerializer.Serialize(result) + Environment.NewLine); return true; } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { warn($"Result could not be saved: {ex.Message}"); return false; } }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { Fallback(); try { EnsureFile(); File.AppendAllText(FilePath, JsonSerializer.Serialize(result) + Environment.NewLine); return true; } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { warn(LocalizationManager.GetString("LeaderboardSaveFailed")); return false; } }
     }
 }

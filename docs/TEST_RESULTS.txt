@@ -7,7 +7,7 @@ PASS | Normal end-state input rejected
 PASS | Hard paired deck
 PASS | Hard victory and time bonus
 PASS | Hard end-state input rejected
-PASS | Fisher�Yates changes deck order
+PASS | Fisher-Yates changes deck order
 PASS | Ready rejects input
 PASS | Repeated revealed-card click rejected
 PASS | Rapid clicks locked and nonnegative penalty
@@ -41,3 +41,22 @@ PASS | Leaderboard DataGridView displays saved results
 PASS | GameOver name entry and Save Result handler
 PASS | Main menu launches
 PASS | Missing-resource warnings observed
+PASS | LANG-01 First-run actual menu is Vietnamese
+PASS | Localization key parity across embedded JSON resources
+PASS | LANG-02 Open menu updates immediately to English
+PASS | LANG-03 Open menu returns to Vietnamese
+PASS | LANG-04 Saved preference restored in a fresh process
+PASS | LANG-05 Missing settings restores Vietnamese
+PASS | LANG-06 Invalid JSON/value and inaccessible settings fall back safely; failed save returns false
+PASS | LANG-07 Settings selector preserves live score and moves
+PASS | LANG-08 Switch preserves active countdown value and state
+PASS | LANG-09 Same card objects/order/reveal flags, pending lock and difficulty
+PASS | LANG-10 All leaderboard headers, difficulty and result values translate in place
+PASS | LANG-11 Actual resource errors and validation exceptions use selected language
+PASS | LANG-12 UTF-8 Vietnamese strings/names retained with Segoe UI
+PASS | LANG-13 Button text measurements and window bounds fit 900x640/default at 100% DPI; native high-DPI remains manual
+PASS | LANG-14 Open Help/About/Team forms and exact three IDs switch together
+PASS | LANG-15 Actual sound button handlers and confirmation question/buttons translate
+PASS | Language switches preserve nonblocking pending mismatch completion
+PASS | Localization form subscribes once
+PASS | Disposed form releases localization event subscription

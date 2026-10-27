@@ -23,7 +23,7 @@ public sealed class ResourceManager : IDisposable
     {
         foreach (var folder in new[] { "img", "bg" })
         if (!Directory.Exists(Path.Combine(Root, folder)))
-            Warn($"Missing {folder}/ folder. Built-in card designs will be used; unavailable sound is skipped.");
+            Warn(LocalizationManager.GetString("MissingDirectory", folder));
     }
     public Image? LoadImage(string relative)
     {
@@ -37,7 +37,7 @@ public sealed class ResourceManager : IDisposable
             images.Add(relative, copy);
             return copy;
         }
-        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException or OutOfMemoryException) { Warn($"Cannot load {relative}. A drawn placeholder will be used. {ex.Message}"); return null; }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or ArgumentException or OutOfMemoryException) { Warn(LocalizationManager.GetString("ImageLoadFailed", relative)); return null; }
     }
     public void Dispose()
     {

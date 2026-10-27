@@ -1,44 +1,48 @@
-# Test plan and actual results
+# Kế hoạch và kết quả kiểm thử
 
-Environment: Windows 10 x64; Visual Studio 2026 Community 18; .NET SDK 10.0.401; target net8.0-windows with installed WindowsDesktop 10.0.12. Release build: **PASS, 0 warnings, 0 errors**. Solution opened in Visual Studio; accessibility tree confirmed title and PokemonMemoryBattle debug target. Actual executed checks: **43 PASS**, recorded in TEST_RESULTS.txt. These are model/service checks and real STA WinForms handler/timer tests; they are not a claim of manual desktop clicks. Runtime form screenshots were captured by DrawToBitmap and visually inspected.
+Môi trường Windows 10 x64, .NET SDK 10.0.401, target net8.0-windows. Release build 0 lỗi/0 cảnh báo. Có **62 PASS**: 43 kiểm tra hồi quy gốc, 15 ca LANG và 4 kiểm tra bổ sung (đồng nhất khóa, delay đang chờ, đăng ký và gỡ sự kiện). Log nguyên bản trong TEST_RESULTS.txt và LOCALIZATION_RESULTS.txt.
 
-Run `tests/Run-Tests.ps1` on Windows. The test runner opens real forms and processes their message loop with Application.DoEvents only within the test harness; production gameplay uses Application.Run and WinForms Timer. Pump uses elapsed wall time, not Thread.Sleep. Tests isolate score writes in a temporary directory. The first short countdown assertion was corrected to wait over one active second rather than relying on incidental UI overhead; final run passes.
+Chạy `powershell -ExecutionPolicy Bypass -File tests/Run-Tests.ps1`. SelfTests/LocalizationTests mở form STA thật, gọi PerformClick và bơm message loop để Timer Tick thực sự chạy. Application.DoEvents chỉ nằm trong harness. Điểm và settings tạm không sửa dữ liệu/cài đặt cá nhân. LANG-04 khởi chạy tiến trình executable mới, không chỉ gán lại biến trong cùng tiến trình.
 
-| Case | Steps | Expected | Actual |
+## Hồi quy gameplay và dịch vụ
+| Nhóm | Bước | Mong đợi và kết quả thực tế |
+|---|---|---|
+| Bộ thẻ | Reset ba mức; đếm cặp; so seed | Đủ 4/6/16 thẻ, hai mỗi loài, shuffle khác: PASS |
+| Nhập thẻ | Click Ready, lặp thẻ, 50 click nhanh khi sai | Click vô hiệu bỏ qua, khóa hai thẻ: PASS |
+| Điểm/thắng | Ghép mọi cặp ba mức | +100/cặp và bonus đúng, khóa terminal, sàn 0: PASS |
+| Timer | Pause khi đang mismatch, Resume, Restart trước tick, timeout thật | Giữ delay/thời gian, reset sạch, Lost ở 0: PASS |
+| Form | Menu, Help, About, grid, GameOver tên và Save, DataGridView | Mở form và lưu/hiển thị được: PASS |
+| File | Thiếu/hỏng ảnh, WAV, JSON, tên null; target file là directory | Callback cảnh báo, fallback, skip dòng, chuyển vị trí ghi: PASS |
+| Âm thanh | Toggle, Feedback, đóng/dispose | Lệnh không ném lỗi: PASS; tiếng qua loa NOT VERIFIED |
+
+## Kiểm thử đa ngôn ngữ
+| Mã | Bước thực hiện | Kết quả mong đợi | Thực tế |
 |---|---|---|---|
-| Decks | Reset Easy, Normal, Hard; group creature IDs | 4/6/16 cards; exactly two each | PASS |
-| Shuffle | Compare seeds 2 and 3 | Different valid permutations | PASS |
-| Start/input | Click Ready, Start, duplicate same card, rapid extra clicks | Ready ignored; duplicate ignored; maximum two during mismatch | PASS |
-| Scoring/win | Select every known pair in all modes | +100/pair plus seconds×5; Won prevents input | PASS |
-| Penalty | First mismatch at score zero | Score remains zero | PASS |
-| Countdown | Pump real WinForms clock beyond one active second | Remaining decreases | PASS |
-| Pause mismatch | Mismatch, pause, pump 1100ms, resume | Both clocks frozen while paused; delay completes after resume | PASS |
-| Restart | Restart before mismatch Timer fires, pump past delay | Fresh Ready grid remains concealed | PASS |
-| Timeout | Real board with one-second test difficulty | Lost at zero | PASS |
-| UI generation | Open 2×2; Normal/Hard at 900×640 | Cards fit with positive usable dimensions | PASS |
-| Save/name | Blank rejected; GameOver text box receives UI Tester, Save PerformClick | File gets chosen name once; button disabled | PASS |
-| Leaderboard | Save tied scores, reload, bind grid | Score↓ moves↑ time↑ date↑; saved rows displayed | PASS |
-| Missing assets | Resource service points to empty temporary root | Warnings collected; drawn fallback / skipped audio | PASS |
-| Invalid assets | Load bad PNG and WAV | Catch and continue | PASS |
-| Corrupt rows | Append bad JSON, null name, invalid score row | Warn; skip bad lines | PASS |
-| Missing scores | Load nonexistent thanhtichs.txt | Warn; empty file created | PASS |
-| Access failure | Primary thanhtichs.txt path is a directory | Switch to temporary writable fallback; save succeeds | PASS |
-| Sound/close | Toggle off/on; Feedback; close forms and dispose players | No thrown error; resources released | PASS for calls/cleanup; audible output NOT VERIFIED |
-| Help/menu/about | Instantiate, Show, pump and close actual forms | Visible forms, live controls | PASS |
-| Modal warning | Rename img/bg or file in isolated compiled copy; launch and acknowledge MessageBox | Human-readable warning and playable fallback | NOT VERIFIED visually; production warning callback and catches tested |
-| Physical display modes | Run at 1366×768 and 1920×1080, 100/150/200% DPI | No clipped controls, readable board | NOT VERIFIED at native screen modes; 900×640 layout checked |
-| Human video/mic | Record 3–5 minutes with a member speaking | Complete narrated video | FAIL: no recording produced |
+| LANG-01 | Khởi tạo tệp cấu hình chưa tồn tại rồi mở MainMenuForm | Mặc định vi-VN; nút Bắt đầu chơi | PASS |
+| LANG-02 | SetLanguage en-US khi menu đang mở | Menu và Cài đặt đổi ngay sang English | PASS |
+| LANG-03 | Đổi lại vi-VN | Menu trở về Tiếng Việt | PASS |
+| LANG-04 | Lưu en-US; mở executable mới bằng --language-probe | Tiến trình mới đọc en-US từ tệp | PASS |
+| LANG-05 | Xóa tệp tạm rồi Initialize | Dùng Tiếng Việt | PASS |
+| LANG-06 | Thử JSON hỏng/null/mảng/sai kiểu/fr-FR, khóa tệp đọc, chặn thư mục ghi | Đọc lỗi về vi-VN; ghi lỗi trả false, không crash | PASS |
+| LANG-07 | Ghép cặp rồi sai để có 90 điểm; đổi bằng ComboBox trong SettingsForm | Điểm/lượt giữ nguyên | PASS |
+| LANG-08 | Đổi khi Playing | Remaining và state giữ nguyên tại thời điểm đổi; không reset Stopwatch | PASS |
+| LANG-09 | Chụp mảng CardModel, flags và lock trước/sau đổi | Cùng object/order/mặt mở/Matched/lock/độ khó | PASS |
+| LANG-10 | Mở bảng; đổi hai chiều | Header, độ khó, kết quả, ngày theo ngôn ngữ | PASS |
+| LANG-11 | Gây lỗi ảnh và tên trống trong mỗi ngôn ngữ | Callback/exception dùng chuỗi đúng ngôn ngữ | PASS |
+| LANG-12 | Kiểm tra chuỗi có dấu và tên, render ảnh | Giữ đúng Unicode với Segoe UI; đã xem ảnh | PASS |
+| LANG-13 | Đo chữ nút/nhãn ở form 900×640; render mặc định 1050×690 | Không cắt chữ ở 100% DPI; cửa sổ nằm trong 1366×768/1920×1080 | PASS phạm vi 100%; NOT VERIFIED màn hình vật lý/DPI cao |
+| LANG-14 | Mở Help/About/Team và các form khác; đổi hai chiều | Đúng tài nguyên mọi label tĩnh, đủ ba ID, xuống dòng thật | PASS |
+| LANG-15 | PerformClick nút âm thanh, đổi ngôn ngữ hộp xác nhận | Trạng thái âm thanh và câu hỏi/nút được dịch | PASS |
 
-## Reproducible manual resource trap
-1. Build Release. Copy the complete net8.0-windows output to a disposable demo folder. Never rename assets in the source tree during grading.
-2. Close that copy. Rename img to img.saved and launch it. Open Start Game. Observe warnings for missing folder and images. Acknowledge; Start and finish Easy using labelled fallback cards.
-3. Close; restore img. Repeat with bg renamed; acknowledge audio/card-back warnings. Gameplay must continue silently with drawn backs.
-4. Restore bg. Rename thanhtichs.txt to thanhtichs.saved; open Leaderboard. Expect warning and a recreated empty file. Save a new named result and reload it.
-5. To test a corrupt file, add one invalid JSON line in the disposable copy. Expect skipped-line warning and valid rows retained.
-6. Restore assets after recording. For mid-game removal, note images and WAVs already loaded are cached; close and reopen the affected form/app to force another disk read. The existing board should keep running.
+## Bằng chứng và giới hạn
+Ảnh DrawToBitmap thật của menu, board, settings, leaderboard, About, Help, kết quả và xác nhận trong cả hai ngôn ngữ được lưu ở screenshots. Đã xem ảnh để kiểm tra dấu và layout; phát hiện/sửa LF thành CRLF trong nội dung TextBox, đồng thời thêm test số dòng. Có kiểm tra mọi chuỗi tĩnh bind ở các form đang mở và key parity của 94 khóa mỗi tài nguyên.
 
-## Verification limits
-The desktop automation helper could enumerate apps and read accessibility trees but capture timed out and mouse input returned unavailable geometry. Therefore no manual mouse-based live workflow, audible playback, or modal screenshot is claimed. App-level DrawToBitmap renders and real event-handler/Timer checks succeeded. A real presentation-machine smoke test remains necessary.
+LANG-13 không chứng minh DPI 150/200% hoặc đã đổi màn hình vật lý; cần thử trên máy thuyết trình. Các cảnh báo tài nguyên đã chạy qua callback, chưa có xác minh bằng mắt hộp MessageBox của lần demo thủ công. Chưa có video hoặc giọng thuyết minh. Bản baseline từng mở trong Visual Studio 2026; bản cập nhật đã build bằng CLI, chưa thao tác GUI Visual Studio lại.
 
-## Independent delivery verification
-The final self-contained win-x64 publish passed the same 43 tests from a different working directory. After pushing, a fresh GitHub clone built with zero warnings/errors and passed all 43 checks, verifying copied assets and relative paths outside the original workspace. These repeat runs validate the delivery paths, not additional test cases.
+## Bẫy lỗi thủ công có thể lặp lại
+1. Build và sao chép toàn bộ output sang thư mục demo riêng. Không đổi tên source chính.
+2. Đóng bản sao, đổi img thành img.saved, mở lại Bắt đầu chơi. Đóng cảnh báo và thử chơi bằng hình thay thế.
+3. Khôi phục img, đổi bg; mở lại, đóng cảnh báo, xác nhận chơi không tiếng vẫn được.
+4. Khôi phục bg, đổi thanhtichs.txt, mở Bảng thành tích: cảnh báo và tạo rỗng. Lưu tên rồi tải lại.
+5. Chuyển English và lặp lỗi để kiểm tra nội dung cảnh báo English. Thêm dòng JSON hỏng để kiểm tra bỏ dòng.
+6. Ảnh/WAV đã cache không tự mất khi rename; mở lại form/app để buộc nạp nguồn. Khôi phục tài nguyên trước khi quay/nộp.

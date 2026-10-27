@@ -7,7 +7,7 @@ public enum GameState
 public record Difficulty(string Name, int Rows, int Columns, int Seconds)
 {
     public static readonly Difficulty[] All = [new("Easy", 2, 2, 45), new("Normal", 2, 3, 60), new("Hard", 4, 4, 120)];
-    public override string ToString() => $"{Name}  {Rows} × {Columns}";
+    public override string ToString() => LocalizationManager.GetString("DifficultyFormat", LocalizationManager.GetString("Difficulty" + Name), Rows, Columns);
 }
 public sealed class CardModel(int creature)
 {

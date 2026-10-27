@@ -14,7 +14,7 @@ Trạng thái: chưa có video. Công cụ tự động chụp cửa sổ deskto
 | 4:10–4:25 | Kết thúc, nhắc repo và thành viên | Mời giảng viên clone/run |
 
 ## Checklist ghi hình
-- [ ] Điền thông tin thật trong About và báo cáo; không quay placeholder.
+- [ ] Kiểm tra đúng ba tên/MSSV trong About/báo cáo; lớp chỉ bổ sung khi được cung cấp.
 - [ ] Chuẩn bị bản sao output và backup tài nguyên, thử nguồn âm thanh chia sẻ.
 - [ ] Chọn công cụ quay màn hình được nhóm cho phép; ghi cửa sổ game và Visual Studio, tắt thông báo riêng tư.
 - [ ] Bật microphone thật, test 10 giây, nghe lại tiếng nói và WAV; không chỉ nhìn nút Sound.
@@ -23,3 +23,5 @@ Trạng thái: chưa có video. Công cụ tự động chụp cửa sổ deskto
 - [ ] Lưu MP4 vào docs/video/demo.mp4 nếu dưới giới hạn GitHub; nếu lớn dùng GitHub Release và đặt liên kết thực trong README (không bịa URL).
 - [ ] Commit/push video hoặc link thật; mở repo không đăng nhập để thử quyền truy cập.
 - [ ] Điền URL kho vào cột Giữa kì, xác nhận riêng với đại diện nhóm.
+
+Chèn cảnh Cài đặt: đổi English/Tiếng Việt khi đang có điểm và cặp chờ; chỉ ván không reset. Vai trò dự kiến: Dương Đình Khôi code/GitHub; Đào Trọng Quyền UI/tài nguyên/hỗ trợ tài liệu; Cổ Gia Phúc trình bày/demo/QA/báo cáo cuối. Chưa có bản ghi thực tế.

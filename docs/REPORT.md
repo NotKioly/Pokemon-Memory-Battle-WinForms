@@ -2,22 +2,22 @@
 
 Học phần Lập trình trên Windows 2611COMP101901
 
-Nhóm [TÊN NHÓM] gồm ba thành viên
+Nhóm AltF4 gồm ba thành viên
 
 Ngày 27 tháng 10 năm 2026
 
-Báo cáo mô tả phần mềm đã triển khai, mã thực tế và kết quả 43 kiểm tra PASS. Cần bổ sung danh tính thật, video thuyết minh và xác nhận nộp link.
+Báo cáo mô tả phần mềm đã triển khai, mã thực tế và kết quả 62 kiểm tra PASS, gồm 15 ca đa ngôn ngữ. Cần bổ sung lớp, video thuyết minh và xác nhận nộp link.
 
 
 # Chương 1 Giới thiệu đề tài
 
 ## Mục tiêu và kết quả
-Pokémon Memory Battle là trò chơi ghép cặp thẻ cho học phần Lập trình trên Windows 2611COMP101901. Sản phẩm thể hiện xử lý sự kiện, sinh giao diện động, quản lý trạng thái, Timer, SoundPlayer và lưu thành tích bằng System.IO. Bản Release biên dịch thành công với 0 lỗi, 0 cảnh báo; 43 phép kiểm tra đã chạy trên Windows, gồm form thật và Timer thật.
+Pokémon Memory Battle là trò chơi ghép cặp thẻ cho học phần Lập trình trên Windows 2611COMP101901. Sản phẩm thể hiện xử lý sự kiện, sinh giao diện động, quản lý trạng thái, Timer, SoundPlayer và lưu thành tích bằng System.IO. Bản Release biên dịch thành công với 0 lỗi, 0 cảnh báo; 62 phép kiểm tra đã chạy trên Windows, gồm form thật và Timer thật.
 ## Lý do lựa chọn
 Luật Trúc Xanh ngắn gọn giúp người xem hiểu ngay trong buổi báo cáo 10 phút. Lưới Easy 2×2 cho phép hoàn thành ván và lưu tên nhanh; Normal 2×3 và Hard 4×4 tăng thử thách mà không cần xây dựng hệ thống chiến đấu phức tạp. Toàn bộ sinh vật và WAV được tạo riêng, không lấy hình hoặc nhạc thương mại của Pokémon.
 ## Công nghệ và phạm vi
 Chương trình dùng C#, WinForms, target net8.0-windows, không dùng UI package ngoài. Môi trường kiểm tra: Windows 10 x64, Visual Studio 2026 Community 18, SDK 10.0.401, Windows Desktop Runtime 10.0.12. RollForward=Major cho phép chạy target .NET 8 trên runtime mới đã cài. Máy khác có thể cài .NET 8 Desktop Runtime hoặc chạy bản publish tự chứa runtime. Visual Studio 2022 từ 17.8 với workload .NET desktop development có thể mở solution.
-Phạm vi gồm một người chơi offline, ba độ khó, tính điểm, đếm ngược, pause/resume, restart, âm thanh, nhập tên và bảng xếp hạng. Không có tài khoản mạng, cơ sở dữ liệu, chiến đấu Pokémon hay chống sửa điểm. Ba thành viên cần điền thông tin thật và nhận bàn giao code trước khi trình bày.
+Phạm vi gồm một người chơi offline, ba độ khó, tính điểm, đếm ngược, pause/resume, restart, âm thanh, nhập tên và bảng xếp hạng. Không có tài khoản mạng, cơ sở dữ liệu, chiến đấu Pokémon hay chống sửa điểm. Ba thành viên đã có tên/MSSV chính xác; cần bổ sung lớp và nhận bàn giao code trước khi trình bày.
 
 # Chương 2 Phân tích yêu cầu
 
@@ -29,7 +29,7 @@ Easy có 4 thẻ/45 giây, Normal 6 thẻ/60 giây, Hard 16 thẻ/120 giây. Đ�
 Giao diện navy, chữ sáng, nhấn vàng, nút tự vẽ có hover/pressed/focus. Lưới phần trăm và Dock thích nghi cửa sổ, kích thước tối thiểu 900×640. Đường dẫn dựa trên AppContext.BaseDirectory và tài nguyên được copy khi build/publish. Không dùng Thread.Sleep trên UI thread. Lỗi tài nguyên và dữ liệu có cảnh báo và phương án phục hồi riêng.
 ## Đối chiếu hướng dẫn giảng viên
 Đã đọc toàn bộ văn bản và bảng trong tài liệu cung cấp. Bài nộp phải có solution, .gitignore chuẩn Visual Studio, img, bg/no-image.png, true.wav, false.wav, thanhtichs.txt mẫu, video 3–5 phút có thành viên nói. Báo cáo tối đa 10 phút phải thể hiện Help/About với họ tên/MSSV/lớp, gameplay, âm thanh, leaderboard, bẫy lỗi và giải thích mã thực tế. REQUIREMENTS.md ánh xạ từng nghĩa vụ tới lớp/hàm và thủ tục xác minh.
-Nhãn 7.0 điểm ở phần gameplay không khớp tổng mục con; giữ mọi tiêu chí, không tự sửa thang điểm. Không suy ra tên nhóm/khung giờ từ số ba người. Hạn nộp link là 23h59 ngày 27/10/2026; buổi báo cáo từ 20h00 ngày 29/10/2026; đến sớm ít nhất 10 phút. Thông tin thật, video thuyết minh, nộp cột Giữa kì và vấn đáp chưa được coi là đã hoàn thành.
+Nhãn 7.0 điểm ở phần gameplay không khớp tổng mục con; giữ mọi tiêu chí, không tự sửa thang điểm. Theo đúng ba tên/MSSV, AltF4 có khung 21:10–21:20; không suy ra nhóm chỉ từ số người. Hạn nộp link là 23h59 ngày 27/10/2026; buổi báo cáo từ 20h00 ngày 29/10/2026; đến sớm ít nhất 10 phút. Lớp, video thuyết minh, xác nhận nộp cột Giữa kì và vấn đáp vẫn chưa hoàn thành.
 
 # Chương 3 Thiết kế hệ thống
 
@@ -70,51 +70,111 @@ Thay Sleep(2000) bằng Timer; thêm countdown/pause; nhập tên thật thay No
 ## Luồng trạng thái
 Ready → Start → Playing. Playing ↔ Paused. Playing → Won khi đủ cặp; Playing → Lost khi hết giờ. Restart ở mọi trạng thái tạo Ready mới. Mọi Select ngoài Playing bị bỏ qua. Victory và timeout dừng Timer trước khi mở GameOverForm để hộp thoại không làm chạy ngầm ván chơi.
 
-## Trích đoạn từ source triển khai
+## Chức năng đa ngôn ngữ (Tiếng Việt và Tiếng Anh)
 
-### Program.cs
-Nguồn src/Program.cs
+Hai ngôn ngữ giúp nhóm trình bày bằng Tiếng Việt và phục vụ người dùng English. Lần đầu dùng vi-VN. LocalizationManager đọc src/Resources/Strings.vi-VN.json và Strings.en-US.json nhúng vào assembly; mỗi tệp có 94 khóa đồng nhất. Đây là hệ thống tập trung thay cho resx. GameManager, mã độ khó và schema file không đổi theo ngôn ngữ.
+
+SetLanguage đổi CurrentCulture/CurrentUICulture rồi phát LanguageChanged. LocalizedForm gọi ApplyLocalization để cập nhật tiêu đề, text, accessible name và tooltip; Dispose gỡ đăng ký để không giữ form cũ. Các form con cập nhật HUD, thẻ, cột/giá trị bảng điểm và trạng thái nút. GameForm.ApplyLocalization không gọi ResetGame và không thay Stopwatch/CardModel. Đồng hồ vẫn chạy trong Cài đặt; người chơi có thể Tạm dừng trước.
+
+SettingsForm dùng SelectedIndexChanged, SetLanguage và SaveLanguagePreference. Cấu hình ở %LOCALAPPDATA%/PokemonMemoryBattle/settings.json; không ghi vào thư mục cài đặt. Ghi qua tệp tạm rồi File.Move thay thế. Thiếu tệp, JSON hỏng/sai kiểu, ngôn ngữ không hỗ trợ hoặc lỗi quyền đọc dùng Tiếng Việt. Ghi thất bại trả false, báo cảnh báo theo tiếng đã chọn và giữ lựa chọn trong phiên. GetString chuẩn hóa CRLF để TextBox nhiều dòng hiển thị đúng đoạn văn.
+
+LANG-01 đến LANG-15 đã thực thi trên Windows: tiến trình mới đọc lựa chọn, bảo toàn điểm/lượt/thời gian/thẻ, dịch bảng điểm, lỗi, hướng dẫn và nhóm. Đã đo text và xem ảnh 100% DPI; màn hình vật lý/DPI cao cần thử riêng. Vai trò sinh viên vẫn là phân công dự kiến.
+
+## Trích đoạn từ source triển khai cuối
+
+### Đổi ngôn ngữ
+Nguồn: src/Services/LocalizationManager.cs
 ```csharp
-    [STAThread]
-    static void Main(string[] args)
+    public static void SetLanguage(string cultureCode)
     {
-        ApplicationConfiguration.Initialize();
-        if (args.Contains("--self-test"))
-        {
-            SelfTests.Run();
-            return;
-        }
-        Application.Run(new MainMenuForm());
+        string supported = SupportedLanguages.Contains(cultureCode) ? cultureCode : DefaultLanguage;
+        bool changed = CurrentLanguage != supported;
+        CurrentLanguage = supported;
+        CultureInfo.CurrentUICulture = Culture;
+        CultureInfo.CurrentCulture = Culture;
+        if (changed)
+            LanguageChanged?.Invoke(null, EventArgs.Empty);
     }
-}
 ```
 
-### Sinh thẻ động
-Nguồn src/Forms/GameForm.cs
+### Khôi phục lựa chọn
+Nguồn: src/Services/LocalizationManager.cs
 ```csharp
-        var back = resources.LoadImage("bg/no-image.png");
-        for (int i = 0; i < Game.Cards.Count; i++)
+    public static string LoadLanguagePreference()
+    {
+        SettingsLoadFailed = false;
+        try
         {
-            int index = i;
-            var card = new MemoryCardControl(Game.Cards[i], resources.LoadImage($"img/{Game.Cards[i].Creature}.png"), back);
-            card.Click += (_, _) => SelectCard(index);
-            CardControls.Add(card);
-            grid.Controls.Add(card, i % difficulty.Columns, i / difficulty.Columns);
+            if (!File.Exists(settingsPath))
+                return DefaultLanguage;
+            using JsonDocument document = JsonDocument.Parse(File.ReadAllText(settingsPath));
+            if (document.RootElement.ValueKind == JsonValueKind.Object &&
+                document.RootElement.TryGetProperty("language", out JsonElement language) &&
+                language.ValueKind == JsonValueKind.String && SupportedLanguages.Contains(language.GetString()))
+                return language.GetString()!;
+            SettingsLoadFailed = true;
         }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or JsonException)
+        {
+            SettingsLoadFailed = true;
+        }
+        return DefaultLanguage;
+    }
 ```
 
-### Fisher Yates
-Nguồn src/GameLogic/GameManager.cs
+### Lưu lựa chọn
+Nguồn: src/Services/LocalizationManager.cs
 ```csharp
-        for (int i = Cards.Count - 1; i > 0; i--)
+    public static bool SaveLanguagePreference()
+    {
+        string temporary = settingsPath + ".tmp";
+        try
         {
-            int j = random.Next(i + 1);
-            (Cards[i], Cards[j]) = (Cards[j], Cards[i]);
+            Directory.CreateDirectory(Path.GetDirectoryName(settingsPath)!);
+            File.WriteAllText(temporary, JsonSerializer.Serialize(new { language = CurrentLanguage }));
+            File.Move(temporary, settingsPath, true);
+            SettingsLoadFailed = false;
+            return true;
         }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            return false;
+        }
+    }
 ```
 
-### Khóa và so khớp
-Nguồn src/GameLogic/GameManager.cs
+### Đổi chữ giữ nguyên ván
+Nguồn: src/Forms/GameForm.cs
+```csharp
+    public override void ApplyLocalization()
+    {
+        base.ApplyLocalization();
+        // Text only: never call ResetGame or touch the Stopwatches here.
+        RefreshGame();
+    }
+```
+
+### Đếm ngược
+Nguồn: src/Forms/GameForm.cs
+```csharp
+    private void OnClockTick(object? sender, EventArgs e)
+    {
+        if (Game.State != GameState.Playing)
+            return;
+
+        // Process every complete active second, including delayed UI ticks.
+        while (elapsed.ElapsedMilliseconds / 1000 > processedSeconds && Game.State == GameState.Playing)
+        {
+            processedSeconds++;
+            Game.Tick();
+        }
+        RefreshGame();
+        FinishIfNeeded();
+    }
+```
+
+### So khớp và khóa thẻ
+Nguồn: src/GameLogic/GameManager.cs
 ```csharp
     public bool? Select(int index)
     {
@@ -147,74 +207,10 @@ Nguồn src/GameLogic/GameManager.cs
         }
         return true;
     }
-    public void ResolveMismatch()
 ```
 
-### Tính điểm
-Nguồn src/GameLogic/GameManager.cs
-```csharp
-public static class ScoreManager
-{
-    public static int Match(int score) => score + 100;
-    public static int Miss(int score) => Math.Max(0, score - 10);
-    public static int Victory(int score, int seconds) => score + seconds * 5;
-}
-```
-
-### Timer
-Nguồn src/Forms/GameForm.cs
-```csharp
-    private void OnClockTick(object? sender, EventArgs e)
-    {
-        if (Game.State != GameState.Playing)
-            return;
-
-        // Process every complete active second, including delayed UI ticks.
-        while (elapsed.ElapsedMilliseconds / 1000 > processedSeconds && Game.State == GameState.Playing)
-        {
-            processedSeconds++;
-            Game.Tick();
-        }
-        RefreshGame();
-        FinishIfNeeded();
-    }
-
-    private void OnFlipTick(object? sender, EventArgs e)
-    {
-```
-
-### Pause Resume
-Nguồn src/Forms/GameForm.cs
-```csharp
-    public void TogglePause()
-    {
-        if (Game.State is not (GameState.Playing or GameState.Paused))
-            return;
-        Game.TogglePause();
-        if (Game.State == GameState.Paused)
-        {
-            elapsed.Stop();
-            mismatch.Stop();
-            flip.Stop();
-            audio.SetActive(false);
-        }
-        else
-        {
-            elapsed.Start();
-            if (Game.InputLocked)
-            {
-                mismatch.Start();
-                flip.Start();
-            }
-            audio.SetActive(true);
-        }
-        RefreshGame();
-    }
-    private void RefreshGame()
-```
-
-### System IO
-Nguồn src/Services/LeaderboardService.cs
+### System.IO
+Nguồn: src/Services/LeaderboardService.cs
 ```csharp
     public bool Save(Result result)
     {
@@ -225,12 +221,53 @@ Nguồn src/Services/LeaderboardService.cs
             File.AppendAllText(FilePath, JsonSerializer.Serialize(result) + Environment.NewLine);
             return true;
         }
-        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { Fallback(); try { EnsureFile(); File.AppendAllText(FilePath, JsonSerializer.Serialize(result) + Environment.NewLine); return true; } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { warn($"Result could not be saved: {ex.Message}"); return false; } }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { Fallback(); try { EnsureFile(); File.AppendAllText(FilePath, JsonSerializer.Serialize(result) + Environment.NewLine); return true; } catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { warn(LocalizationManager.GetString("LeaderboardSaveFailed")); return false; } }
     }
 ```
 
-### SoundPlayer và try catch
-Nguồn src/Services/AudioManager.cs
+
+## Trích đoạn bổ sung cho vấn đáp
+
+### Điểm vào WinForms
+Nguồn: src/Program.cs
+```csharp
+        LocalizationManager.Initialize();
+        Application.Run(new MainMenuForm());
+```
+
+### Tính điểm
+Nguồn: src/GameLogic/GameManager.cs
+```csharp
+public static class ScoreManager
+{
+    public static int Match(int score) => score + 100;
+    public static int Miss(int score) => Math.Max(0, score - 10);
+    public static int Victory(int score, int seconds) => score + seconds * 5;
+}
+```
+
+### Fisher Yates
+Nguồn: src/GameLogic/GameManager.cs
+```csharp
+        for (int i = Cards.Count - 1; i > 0; i--)
+        {
+            int j = random.Next(i + 1);
+            (Cards[i], Cards[j]) = (Cards[j], Cards[i]);
+        }
+```
+
+### Sinh thẻ và gắn Click
+Nguồn: src/Forms/GameForm.cs
+```csharp
+            int index = i;
+            var card = new MemoryCardControl(Game.Cards[i], resources.LoadImage($"img/{Game.Cards[i].Creature}.png"), back);
+            card.Click += (_, _) => SelectCard(index);
+            CardControls.Add(card);
+            grid.Controls.Add(card, i % difficulty.Columns, i / difficulty.Columns);
+```
+
+### SoundPlayer và catch
+Nguồn: src/Services/AudioManager.cs
 ```csharp
     private void Play(string file, bool loop = false)
     {
@@ -243,16 +280,17 @@ Nguồn src/Services/AudioManager.cs
             else
                 player.Play();
         }
-        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException or System.ComponentModel.Win32Exception) { resources.Warn($"Audio playback failed for {file}. {ex.Message}"); players.Remove(file); player.Dispose(); }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException or System.ComponentModel.Win32Exception) { resources.Warn(LocalizationManager.GetString("AudioPlayFailed", file)); players.Remove(file); player.Dispose(); }
     }
     private void Background()
 ```
 
-
 # Chương 5 Kiểm thử
 
 ## Phương pháp và kết quả
-Build Release có 0 lỗi và 0 cảnh báo. Solution mở trong Visual Studio, title/debug target được quan sát qua accessibility. SelfTests chạy STA, mở form thật, dùng PerformClick đi qua handler, bơm message loop để WinForms Timer thực sự Tick. Application.DoEvents chỉ dùng trong harness kiểm thử. TEST_RESULTS.txt ghi 43 PASS của lần chạy cuối; TEST_PLAN.md có từng bước, mong đợi và thực tế.
+Bản nâng cấp có 62 PASS: 43 kiểm tra gốc và 19 bổ sung, gồm 15 mã LANG. Selector thật và tiến trình khôi phục mới đã chạy. Đã thử JSON lỗi, tệp bị khóa, đường dẫn không ghi được. Xem LOCALIZATION_RESULTS.txt và ảnh hai ngôn ngữ.
+
+Build Release có 0 lỗi và 0 cảnh báo. Solution mở trong Visual Studio, title/debug target được quan sát qua accessibility. SelfTests chạy STA, mở form thật, dùng PerformClick đi qua handler, bơm message loop để WinForms Timer thực sự Tick. Application.DoEvents chỉ dùng trong harness kiểm thử. TEST_RESULTS.txt ghi 62 PASS của lần chạy cuối; TEST_PLAN.md có từng bước, mong đợi và thực tế.
 Các test xác nhận số cặp và thắng/tính thưởng cả ba mức, shuffle bằng seed, sàn điểm 0, click trước Start và click trùng bị bỏ qua, khóa 50 click nhanh, pause giữa mismatch, resume tiếp delay, restart khi đang chờ, timeout bằng Timer thật, lưới Normal/Hard ở 900×640, Help/About/menu, nhập tên và Save qua form, DataGridView nạp dữ liệu.
 Test service dùng thư mục tạm, không sửa dữ liệu mẫu. File thiếu được tạo lại; JSON sai, tên null hoặc giá trị lỗi bị bỏ qua. Đường dẫn thanhtichs.txt là một thư mục tạo lỗi truy cập để kiểm tra fallback. Ảnh PNG hỏng, WAV hỏng và nguồn thiếu được nạp thật, callback cảnh báo được ghi nhận và chương trình tiếp tục.
 ## Một số ca tiêu biểu
@@ -270,27 +308,31 @@ Test service dùng thư mục tạm, không sửa dữ liệu mẫu. File thiế
 Desktop automation đọc được accessibility nhưng chụp cửa sổ timeout và click báo thiếu hình học. Không khẳng định đã demo thủ công bằng chuột, nhìn thấy modal MessageBox hay nghe được tiếng từ loa. Hộp thoại đã được cài bằng MessageBox.Show và callback lỗi đã thực thi. Cần nhóm xác nhận bằng mắt và tai trên máy trình bày. Native display/DPI cao cũng chưa được đổi để thử.
 Khi demo, copy output ra thư mục riêng; đóng app, đổi tên img hoặc bg, mở lại và đóng cảnh báo, tiếp tục chơi. Đổi tên thanhtichs.txt rồi mở Leaderboard để thấy tái tạo file. Thêm dòng JSON hỏng để thử bỏ dòng. Khôi phục mọi tài nguyên sau khi ghi. Ảnh và WAV đã nạp được cache nên cần mở lại form/app để buộc đọc nguồn; không gây hỏng cây source chính.
 
+## Kết quả kiểm toán chấm điểm
+FINAL_AUDIT.md giữ toàn bộ tiêu chí. Do đề có sai lệch mục con 8 điểm và phần 2 ghi 7 điểm, quy ước ước tính quy đổi phần 2 theo 7/8, tổng 7,7875 ≈ 7,79/10. Đây không phải điểm chính thức; thiếu lớp, video, tiếng nghe được, bẫy lỗi live và vấn đáp nên không chấm tối đa.
+
+
 # Chương 6 Kết quả và hướng phát triển
 
 ## Kết quả
 Phần mềm có menu, board ba mức, state machine, điểm, clicks/moves, countdown, pause, reset, nhập tên, bảng điểm, audio nền/sự kiện và phục hồi lỗi. Tài nguyên ở đúng img/bg/thanhtichs.txt, được đóng gói khi build và publish. Ảnh và WAV gốc có công thức tái tạo; code MIT, tài nguyên CC0. Các tệp tài liệu giúp sinh viên tìm và giải thích code thật.
-Kho công khai được tạo tại https://github.com/NotKioly/Pokemon-Memory-Battle-WinForms. Trạng thái push/remote được ghi trong DELIVERY.md khi bàn giao. Nhóm phải điền thông tin thật, quay video có người nói, nghe thử âm thanh, kiểm tra MessageBox và màn hình/DPI, clone/build trên máy trình bày. Đại diện cần nhập URL vào cột Giữa kì và xác nhận riêng.
+Kho công khai được tạo tại https://github.com/NotKioly/Pokemon-Memory-Battle-WinForms. Trạng thái push/remote được ghi trong DELIVERY.md khi bàn giao. Nhóm cần bổ sung lớp và quay video có người nói, nghe thử âm thanh, kiểm tra MessageBox và màn hình/DPI, clone/build trên máy trình bày. Đại diện cần nhập URL vào cột Giữa kì và xác nhận riêng.
 ## Hạn chế
 Lưu file không chống sửa điểm hoặc khóa ghi đa tiến trình. Điểm không chuẩn hóa giữa độ khó nên table hiển thị mode và thắng/thua. Lật thẻ đổi mặt ngay và chờ 750ms nếu sai; chưa có animation 3D. Sinh vật gốc thay cho Pokémon chính thức. WinForms chỉ chạy Windows. Bài mẫu WIN_T4_TrucXanh không được cung cấp nên chỉ so với hạn chế giảng viên mô tả.
 ## Hướng phát triển
-Có thể thêm lọc xếp hạng theo độ khó, mở rộng bộ sinh vật, animation flip nhẹ và profile người chơi. Cần hoàn thiện minh chứng nộp bài trước tính năng thêm. Sinh viên phải đọc, thử sửa nhỏ và diễn tập code; phân công đề xuất không phải tuyên bố các cá nhân chưa xác định đã thực hiện công việc.
+Có thể thêm lọc xếp hạng theo độ khó, mở rộng bộ sinh vật, animation flip nhẹ và profile người chơi. Cần hoàn thiện minh chứng nộp bài trước tính năng thêm. Sinh viên phải đọc, thử sửa nhỏ và diễn tập code; phân công đề xuất không phải tuyên bố từng cá nhân đã thực hiện các phần việc chưa có minh chứng.
 
 # Chương 7 Phân công công việc
 
-## Ba thành viên
-| Người nhận bàn giao | Thông tin cần điền | Trách nhiệm |
-|---|---|---|
-| 1 | [HỌ TÊN 1], [MSSV 1], [LỚP 1] | Gameplay, GameManager, điểm, Timer, IO, bắt lỗi |
-| 2 | [HỌ TÊN 2], [MSSV 2], [LỚP 2] | UI/UX, tài nguyên, hướng dẫn, tài liệu và báo cáo |
-| 3 | [HỌ TÊN 3], [MSSV 3], [LỚP 3] | QA, thuyết trình, video thật, GitHub và nộp link |
-## Nhận bàn giao và diễn tập
-Thành viên 1 giải thích Select/Reset/Tick, chạy test, thử thay đổi điểm cộng và xác minh file lưu. Thành viên 2 duyệt bố cục/báo cáo, điền thông tin, giải thích TableLayoutPanel và OnPaint. Thành viên 3 chạy bẫy lỗi ở bản sao output, quay video 3–5 phút, xem lại đủ âm thanh và chữ rồi upload. Mỗi người chuẩn bị Event Handler, System.IO, SoundPlayer, Timer, try/catch và chỉnh sửa nhỏ trực tiếp.
-Kịch bản 10 phút: 0–1 giới thiệu và About; 1–4 gameplay Easy, âm thanh, pause, lưu điểm; 4–7 code và tài nguyên thiếu; 7–10 vấn đáp. DEMO_SCRIPT.md có câu trả lời ngắn; VIDEO_RECORDING.md có checklist và mốc quay. Không dùng slide lý thuyết dài thay live demo.
-## Xác nhận trước khi nộp
-Kiểm tra repo public, clone thư mục mới, build/run Easy, lưu tên, mở leaderboard và đổi tên tài nguyên để xác nhận MessageBox. Upload video thật hoặc link Release thật. Điền URL kho vào cột Giữa kì trước 23h59 ngày 27/10/2026 và xác nhận với nhóm. Tất cả mở Visual Studio, thử mic/camera/chia sẻ âm thanh trước khung giờ ít nhất 10 phút.
-Nguồn nội bộ: tài liệu hướng dẫn giảng viên được cung cấp; src; REQUIREMENTS.md; CODE_EXPLANATION.md; TEST_PLAN.md; TEST_RESULTS.txt. Trích đoạn Chương 4 lấy trực tiếp từ source, không đặt tên hàm hoặc lớp giả định.
+
+| STT | Họ và tên | MSSV | Trách nhiệm dự kiến |
+|---|---|---|---|
+| 1 | Dương Đình Khôi | 51.01.104.049 | Lập trình chính; gameplay/logic; Timer/điểm; xử lý lỗi; quản lý source GitHub |
+| 2 | Đào Trọng Quyền | 51.01.104.085 | UI/UX; tài nguyên; kiểm thử giao diện; hỗ trợ tài liệu kỹ thuật |
+| 3 | Cổ Gia Phúc | 51.01.104.126 | Thuyết trình; minh họa game; kiểm thử/QA; chuẩn bị báo cáo cuối |
+
+Đây là phân công dự kiến để nhận bàn giao và diễn tập, không xác nhận đóng góp đã hoàn thành. Chưa có lớp, tên trường hay tên giảng viên nên không suy đoán.
+
+Khôi cần giải thích GameManager.Select/Reset, GameForm.OnClockTick/OnFlipTick, lưu file và LocalizationManager. Quyền cần trình bày Theme, MemoryCardControl, LocalizedForm.ApplyLocalization, SettingsForm và tài nguyên. Phúc cần nắm SelfTests/LocalizationTests, kết quả kiểm thử, kịch bản, video và báo cáo. Cả ba chuẩn bị Event Handler, Timer, SoundPlayer, System.IO, try/catch và chỉnh sửa nhỏ trực tiếp.
+
+Ba tên/MSSV khớp AltF4, khung 21:10–21:20 ngày 29/10/2026. Chuẩn bị trước 21:00: mở Visual Studio, thử mic/camera/chia sẻ tiếng, xác nhận lớp thật khi được cung cấp.
