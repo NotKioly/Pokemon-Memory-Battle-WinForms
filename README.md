@@ -49,9 +49,9 @@ Original generated PNG/WAV assets replace official Pokémon art and music. See `
 Run `powershell -ExecutionPolicy Bypass -File tests/Run-Tests.ps1`. Tests open real forms and pump the WinForms message loop. They use temporary score files; bundled sample rows are preserved. See `docs/TEST_PLAN.md` and the recorded `docs/TEST_RESULTS.txt`. Release build has zero errors and warnings. Screen captures are real `DrawToBitmap` renders of running forms, not design mockups.
 
 ## Team and submission
-1. [HỌ TÊN 1] — [MSSV 1] — [LỚP 1]: gameplay, timing, storage, errors.
-2. [HỌ TÊN 2] — [MSSV 2] — [LỚP 2]: UI, assets, report.
-3. [HỌ TÊN 3] — [MSSV 3] — [LỚP 3]: QA, presentation, narrated video, GitHub notes.
+1. Dương Đình Khôi — 51.01.104.049: gameplay, timing, storage, errors.
+2. Đào Trọng Quyền — 51.01.104.085: UI, assets, report.
+3. Cổ Gia Phúc — 51.01.104.126: QA, presentation, narrated video, GitHub notes.
 
 These are proposed ownership areas for review and presentation, not claims that named students authored unperformed work. Replace placeholders in HelpForm and documentation before submission. Students must understand and rehearse the assisted implementation.
 
