@@ -39,3 +39,6 @@ Run `tests/Run-Tests.ps1` on Windows. The test runner opens real forms and proce
 
 ## Verification limits
 The desktop automation helper could enumerate apps and read accessibility trees but capture timed out and mouse input returned unavailable geometry. Therefore no manual mouse-based live workflow, audible playback, or modal screenshot is claimed. App-level DrawToBitmap renders and real event-handler/Timer checks succeeded. A real presentation-machine smoke test remains necessary.
+
+## Independent delivery verification
+The final self-contained win-x64 publish passed the same 43 tests from a different working directory. After pushing, a fresh GitHub clone built with zero warnings/errors and passed all 43 checks, verifying copied assets and relative paths outside the original workspace. These repeat runs validate the delivery paths, not additional test cases.

@@ -12,7 +12,7 @@ The lecturer calls Section 2 7.0 points while its sub-items total 8.0; the overa
 | L03 | bg/no-image.png and true.wav / false.wav | bg/; AudioManager constructor and Feedback | Inspect copied output; execute sound calls | PASS |
 | L04 | Sample thanhtichs.txt using System.IO | thanhtichs.txt; LeaderboardService.Load/Save | Save/reload in temporary directory | PASS |
 | L05 | 3–5 minute full narrated demo including resource failure | docs/VIDEO_RECORDING.md | Real member records and reviews final video | FAIL |
-| L06 | Public GitHub or lecturer permission and complete commit | README; docs/DELIVERY.md; remote main | Verify remote tree after push | NOT VERIFIED |
+| L06 | Public GitHub or lecturer permission and complete commit | README; docs/DELIVERY.md; remote main | Public unauthenticated API tree and fresh clone/build verified | PASS |
 | L07 | Enter repository URL in class Giữa kì column before 27/10/2026 23:59 | docs/DEMO_SCRIPT.md | Group confirms sheet submission separately | NOT VERIFIED |
 | L08 | Attend 29/10/2026 from 20:00, max 10 minutes and arrive 10 minutes early | docs/DEMO_SCRIPT.md | Group confirms actual slot, equipment and attendance | NOT VERIFIED |
 | L09 | Help and About with full name MSSV class and responsibilities | HelpForm; TEAM_CONTRIBUTIONS.md | Placeholders present; real identities not supplied | FAIL |
@@ -47,7 +47,7 @@ The lecturer calls Section 2 7.0 points while its sub-items total 8.0; the overa
 | U21 | 15 beginner code topics explained with real source | docs/CODE_EXPLANATION.md | Compare class/method references against source | PASS |
 | U22 | Actual build no compile errors and Visual Studio opens | Solution; build command | SDK10 Release 0 warnings/0 errors; VS18 title/debug target observed | PASS |
 | U23 | Runtime tests explicitly separated from static/manual checks | docs/TEST_PLAN.md; TEST_RESULTS.txt | 43 executed checks and unresolved manual checks documented | PASS |
-| U24 | Vietnamese seven chapter report and genuine code extracts | docs/REPORT.md; DOCX report | Extract implementation lines; render and inspect pages | NOT VERIFIED |
+| U24 | Vietnamese seven chapter report and genuine code extracts | docs/REPORT.md; DOCX report | Real source excerpts and DOCX structure verified; page rendering blocked by missing renderer (DOCUMENT_QA.md) | NOT VERIFIED |
 | U25 | 10 minute script Q&A plus separate recording checklist | DEMO_SCRIPT; VIDEO_RECORDING | Document inspection | PASS |
 | U26 | Professional navy UI custom buttons hover pressed spacing | Theme; MemoryCardControl; forms | Actual form captures visually inspected | PASS |
 | U27 | 1366×768 and 1920×1080 usability | Theme.Form; TableLayoutPanel Dock/percent styles | Minimum 900×640 grids tested; native screen modes not changed | NOT VERIFIED |
