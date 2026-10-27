@@ -105,10 +105,3 @@ Test chạy Windows, mở form thật, gọi handler và xử lý Timer Tick th�
 | Dương Đình Khôi | Lập trình chính, gameplay/logic, Timer/điểm, xử lý lỗi, quản lý source GitHub |
 | Đào Trọng Quyền | UI/UX, tài nguyên, kiểm thử giao diện, hỗ trợ tài liệu kỹ thuật |
 | Cổ Gia Phúc | Thuyết trình, minh họa game, kiểm thử/QA, chuẩn bị báo cáo cuối |
-
-Sinh viên cần hiểu mã và diễn tập sửa nhỏ trực tiếp. Không có source WIN_T4_TrucXanh; so sánh chỉ dựa vào hạn chế được mô tả trong đề.
-
-## 17. Hạn chế và hướng phát triển
-Chưa có video 3–5 phút với giọng thành viên, xác nhận nộp cột Giữa kì hoặc tên lớp. Cần nghe thử tiếng, xác minh MessageBox bằng mắt, DPI cao và vấn đáp thật. DOCX đã xuất/kiểm tra cấu trúc nhưng chưa render trang vì thiếu Word/LibreOffice (DOCUMENT_QA.md). Điểm không chống sửa/khóa ghi nhiều tiến trình; chưa có flip 3D. Có thể thêm lọc bảng điểm và sinh vật sau khi hoàn thiện minh chứng.
-
-Theo ba tên/MSSV, AltF4 có khung **21:10–21:20 ngày 29/10/2026**, chuẩn bị trước **21:00**. Hạn nộp **23:59 ngày 27/10/2026**; đại diện tự xác nhận đã nhập [URL GitHub](https://github.com/NotKioly/Pokemon-Memory-Battle-WinForms) vào cột **Giữa kì**.
