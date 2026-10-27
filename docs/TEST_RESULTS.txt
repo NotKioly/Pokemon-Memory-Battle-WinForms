@@ -1,0 +1,43 @@
+PASS | Easy paired deck
+PASS | Easy victory and time bonus
+PASS | Easy end-state input rejected
+PASS | Normal paired deck
+PASS | Normal victory and time bonus
+PASS | Normal end-state input rejected
+PASS | Hard paired deck
+PASS | Hard victory and time bonus
+PASS | Hard end-state input rejected
+PASS | Fisher�Yates changes deck order
+PASS | Ready rejects input
+PASS | Repeated revealed-card click rejected
+PASS | Rapid clicks locked and nonnegative penalty
+PASS | Paused model freezes countdown and mismatch
+PASS | Mismatch resolves after resume
+PASS | Timeout ends game
+PASS | Reset clears terminal state
+PASS | Missing folders and images trigger warning callbacks with fallback
+PASS | Malformed image handled
+PASS | Missing audio safe and warning callbacks invoked
+PASS | Invalid WAV safely skipped
+PASS | Missing leaderboard recreated
+PASS | System.IO save
+PASS | Reload sorts ties and skips corrupt rows
+PASS | Blank player name rejected
+PASS | Access failure uses writable fallback
+PASS | Sound toggle OFF
+PASS | Sound toggle ON
+PASS | Real GameForm opens and generates controls
+PASS | Real timers freeze on pause during mismatch
+PASS | Real WinForms mismatch timer resolves after resume
+PASS | Real countdown timer ticks
+PASS | Restart cancels pending timer event
+PASS | Real card click handlers win
+PASS | Normal grid fits at minimum form size
+PASS | Hard grid fits at minimum form size
+PASS | Real countdown reaches loss
+PASS | Help opens
+PASS | About opens
+PASS | Leaderboard DataGridView displays saved results
+PASS | GameOver name entry and Save Result handler
+PASS | Main menu launches
+PASS | Missing-resource warnings observed
