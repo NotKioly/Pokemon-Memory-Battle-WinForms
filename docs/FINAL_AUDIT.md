@@ -25,7 +25,7 @@ Nguồn: đã đọc lại toàn bộ “Lich bao cao + huong dan.docx”, gồm
 | README Tiếng Việt và danh tính nhất quán | README 17 mục; Help/About; báo cáo; kịch bản; phân công | PASS; lớp chưa cung cấp |
 | Báo cáo Markdown và DOCX cập nhật | REPORT.md; BaoCao_GiuaKy_PokemonMemoryBattle.docx | DOCX xuất/kiểm tra cấu trúc; render trang NOT VERIFIED |
 | Video 3–5 phút có thành viên nói và thử lỗi | VIDEO_RECORDING.md mới là hướng dẫn, không có MP4 | FAIL |
-| Kho public, source/resources mới đã push | DELIVERY.md và kiểm tra remote cuối | NOT VERIFIED cho đến push cuối |
+| Kho public, source/resources mới đã push | Commit db3ed15; API public xác nhận 77 tệp; clone mới build và 62/62 test PASS | PASS |
 | Nhập link cột Giữa kì trước 23:59 27/10/2026 | Cần nhóm xác nhận riêng; không tự chấm điểm vì chưa có chứng cứ | NOT VERIFIED |
 | Có mặt trước giờ ít nhất 10 phút | AltF4 21:10–21:20 ngày 29/10/2026; chuẩn bị trước 21:00 | NOT VERIFIED sự kiện tương lai |
 

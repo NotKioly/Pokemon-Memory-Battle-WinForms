@@ -9,3 +9,6 @@ Danh tính: Dương Đình Khôi — 51.01.104.049; Đào Trọng Quyền — 51
 DOCX được cập nhật từ báo cáo hiện có; kiểm tra cấu trúc và nội dung. Visual QA trang bị chặn do không có Word/LibreOffice; xem DOCUMENT_QA.md. Video có giọng thật, âm thanh nghe qua loa, modal MessageBox thủ công, DPI cao, xác nhận nộp link và vấn đáp vẫn chưa hoàn thành/xác minh.
 
 Xuất bản cập nhật dùng commit mô tả, push origin main và kiểm tra lại HEAD cùng cây source/assets public; kết quả push được ghi ở bước kiểm tra cuối. Nếu xác thực hết hạn: `git add .`, `git commit -m "feat: add Vietnamese-English localization and update project documentation"`, sau khi đăng nhập GitHub chạy `git push origin main`. Không dùng force.
+
+## Xác minh xuất bản đã thực hiện
+Commit tính năng db3ed15 đã push thành công vào origin/main. API không đăng nhập xác nhận kho public, 77 tệp tracked, đủ hai JSON nhúng, source localization, README Tiếng Việt, ba tên/MSSV, báo cáo và tài nguyên. Không có bin/obj/.vs/settings.json cá nhân trong cây tracked. Bản clone mới ở thư mục khác build 0 lỗi/0 cảnh báo và chạy 62/62 PASS; bản portable tự chứa cũng chạy 62/62 PASS. Commit tài liệu kế tiếp chỉ ghi lại bằng chứng này. Không force-push.

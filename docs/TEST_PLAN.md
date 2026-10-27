@@ -46,3 +46,6 @@ LANG-13 không chứng minh DPI 150/200% hoặc đã đổi màn hình vật lý
 4. Khôi phục bg, đổi thanhtichs.txt, mở Bảng thành tích: cảnh báo và tạo rỗng. Lưu tên rồi tải lại.
 5. Chuyển English và lặp lỗi để kiểm tra nội dung cảnh báo English. Thêm dòng JSON hỏng để kiểm tra bỏ dòng.
 6. Ảnh/WAV đã cache không tự mất khi rename; mở lại form/app để buộc nạp nguồn. Khôi phục tài nguyên trước khi quay/nộp.
+
+## Kiểm tra đường dẫn bàn giao
+Bản self-contained win-x64 được publish lại và chạy 62/62 PASS từ thư mục làm việc khác. Sau push, clone mới từ GitHub build với 0 lỗi/0 cảnh báo và chạy 62/62 PASS, gồm tiến trình kiểm tra preference mới. Đây là kiểm tra các gói/đường dẫn khác nhau, không tăng số ca kiểm thử.
