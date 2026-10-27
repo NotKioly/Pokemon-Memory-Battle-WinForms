@@ -13,8 +13,6 @@ Vận dụng sự kiện, sinh điều khiển động, trạng thái, Timer, So
 | 2 | Đào Trọng Quyền | 51.01.104.085 |
 | 3 | Cổ Gia Phúc | 51.01.104.126 |
 
-Ba tên/MSSV khớp nhóm AltF4 trong hướng dẫn giảng viên. **Lớp, tên giảng viên và tên trường chưa được cung cấp; không suy diễn từ mã học phần.** About ghi rõ tình trạng lớp.
-
 ## 4. Công nghệ sử dụng
 Ngôn ngữ lập trình **C#**, framework **Windows Forms**, game **Pokémon Memory Battle**. Target **.NET 8 Windows** (`net8.0-windows`), Windows 10/11, Visual Studio 2022 từ 17.8 hoặc mới hơn với workload **.NET desktop development**. Đã build bằng SDK 10.0.401; `RollForward=Major` cho phép dùng Windows Desktop Runtime 10 đã cài. Bản publish tự chứa không cần cài runtime riêng.
 
